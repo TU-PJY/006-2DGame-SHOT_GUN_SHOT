@@ -5,7 +5,7 @@ using T = MatrixTransform;
 public class CameraController : MonoBehaviour
 {
     public GameObject targetObject;
-    public float Offset;
+    public Vector2 Offset;
     public float rotationLerpSpeed;
     public float zoomLerpSpeed;
     public float zoomOutOffset;
@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
         T.Identity(ref camMatrix);
         T.Translate2D(ref camMatrix, targetPos);
         T.Rotate2D(ref camMatrix, camRot);
-        T.Translate2D(ref camMatrix, new Vector2(0f, Offset));
+        T.Translate2D(ref camMatrix, Offset);
         T.Dispatch(transform, ref camMatrix);
 
         // 달리는 동안에는 카메라 줌 아웃 // 달리지 않으면 줌 인

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,8 @@ enum moveDir
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
+    public Animator anim;
+    public Animator legAnim;
     public float linearDamping;
     public float accSpeed;
     public float runSpeedRatio;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
         InputMouse();
         InputKey();
         UpdateAcc();
+        UpdateAnim();
     }
 
     void FixedUpdate()
@@ -55,8 +59,10 @@ public class PlayerController : MonoBehaviour
         moveFlag[(int)moveDir.Right] = Input.GetKey(KeyCode.D);
         moveFlag[(int)moveDir.Left]  = Input.GetKey(KeyCode.A);
 
-        // LSHIFT 입력 시 달리기
-        runFlag = Input.GetKey(KeyCode.LeftShift);
+        // 왼쪽 shift를 누르면 달리기 가능
+        // 달리기는 forward 방향으로만 가능하다.
+        // 앞 뒤를 둘 다 누르고 있을 경우 비활성화 한다
+        runFlag = moveFlag[(int)moveDir.Up] && !moveFlag[(int)moveDir.Down] && Input.GetKey(KeyCode.LeftShift);
     }
 
     void InputMouse()
@@ -77,6 +83,37 @@ public class PlayerController : MonoBehaviour
         if (moveFlag[(int)moveDir.Down])  force.y -= 1f;
         if (moveFlag[(int)moveDir.Right]) force.x += 1f;
         if (moveFlag[(int)moveDir.Left])  force.x -= 1f;
+    }
+
+    void UpdateAnim()
+    {
+        // 각 상태에 따라 다른 애니메이션 재생
+        bool movingUp      = moveFlag[(int)moveDir.Up] && !moveFlag[(int)moveDir.Down];
+        bool movingDown    = moveFlag[(int)moveDir.Down] && !moveFlag[(int)moveDir.Up];
+        bool movingStrafe  = moveFlag[(int)moveDir.Right] != moveFlag[(int)moveDir.Left];
+        bool strafingLeft  = moveFlag[(int)moveDir.Left] && !moveFlag[(int)moveDir.Right];
+        bool strafingRight = moveFlag[(int)moveDir.Right] && !moveFlag[(int)moveDir.Left];
+        bool walking       = movingUp || movingDown || movingStrafe;
+        bool running       = runFlag;
+
+        anim.SetBool("IsWalking", walking);
+        anim.SetBool("IsRunning", running);
+
+        legAnim.SetBool("IsWalking", walking);
+        legAnim.SetBool("IsRunning", running);
+        legAnim.SetBool("IsStrafeLeft", strafingLeft);
+        legAnim.SetBool("IsStrafeRight", strafingRight);
+
+        // 다리 애니메이션은 몸통 애니메이션과 재생 시간 동기화
+        var animState = anim.GetCurrentAnimatorStateInfo(0);
+        if (walking)
+            legAnim.Play("IsWalking", 0, animState.normalizedTime);
+        if (running)
+            legAnim.Play("IsRunning", 0, animState.normalizedTime);
+        if (strafingLeft)
+            legAnim.Play("IsStrafeLeft", 0, animState.normalizedTime);
+        if (strafingRight)
+            legAnim.Play("IsStrafeRight", 0, animState.normalizedTime);
     }
 
     void UpdateBody() // 실제 바디 움직임 업데이트
