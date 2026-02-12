@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
         // 다리 애니메이션은 몸통 애니메이션과 재생 시간 동기화
         var animState = anim.GetCurrentAnimatorStateInfo(0);
+
         if (walking)
             legAnim.Play("IsWalking", 0, animState.normalizedTime);
         if (running)

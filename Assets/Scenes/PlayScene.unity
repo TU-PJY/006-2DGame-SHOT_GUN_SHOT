@@ -161,7 +161,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   targetObject: {fileID: 21910303}
-  Offset: 2.5
+  Offset: {x: 0.46, y: 3.37}
   rotationLerpSpeed: 20
   zoomLerpSpeed: 5
   zoomOutOffset: 1.5
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 1509359666}
   - component: {fileID: 1509359665}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +337,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -356,15 +356,15 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1813424821
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3805959681367517861, guid: 1fc8d0b085d980f4182e8680e9cceede, type: 3}
+  m_Sprite: {fileID: 6699181479296750508, guid: ec1c82318556a364caa7b1addb21e717, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 10, y: 10}
+  m_DrawMode: 2
+  m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -380,7 +380,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.46, y: 2.46, z: 0.24600002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -433,21 +433,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4371603551718532591, guid: 46f3bef19a4fc404d84cad54a30079dd, type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 7482667652216324306, guid: 7a13f2b65c03ee94aaa55a2ba13f26da, type: 3}
     - target: {fileID: 4423509621317038391, guid: 46f3bef19a4fc404d84cad54a30079dd, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5906172794715065913, guid: 46f3bef19a4fc404d84cad54a30079dd, type: 3}
-      propertyPath: accSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5906172794715065913, guid: 46f3bef19a4fc404d84cad54a30079dd, type: 3}
-      propertyPath: runSpeedRatio
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
