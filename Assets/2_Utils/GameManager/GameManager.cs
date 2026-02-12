@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Inst;
 
     public float mouseSensivity;
+
+    private List<Monster> monsterList = new();
 
     void Awake()
     {
