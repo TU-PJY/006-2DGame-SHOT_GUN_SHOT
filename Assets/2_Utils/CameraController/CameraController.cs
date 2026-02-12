@@ -26,7 +26,10 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        // 시작 시 카메라가 초기 상태와 완전히 일치하도록 설정
         defaultCamZoom = cam.orthographicSize;
+        camZoom = defaultCamZoom;
+        camRot = targetObject.transform.rotation.eulerAngles.z - 90f;
     }
 
     void LateUpdate()
