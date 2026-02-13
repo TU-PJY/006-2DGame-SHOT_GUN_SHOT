@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float zoomLerpSpeed;
     public float zoomOutOffset;
 
-    private PlayerController playerInfo;
+    private Player playerInfo;
 
     private Camera cam;
     private Matrix4x4 camMatrix;
@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         cam = GetComponent<Camera>();
-        playerInfo = targetObject.GetComponent<PlayerController>();
+        playerInfo = targetObject.GetComponent<Player>();
     }
 
     void Start()

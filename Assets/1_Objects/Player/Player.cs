@@ -11,7 +11,7 @@ enum moveDir
     Left
 }
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     public Animator anim;

@@ -7,11 +7,16 @@ public class Monster : MonoBehaviour
 
     public float visonRange;
     public float linearDamping;
+
     // 애니메이션 속도 변화량을 결정하는 기준 속도
     // 프레임 수를 사용한다.
     public float standardAccSpeed;
     public float accSpeed;
-    public float attackInterval;
+
+    // 애니메이션 속도 변화량을 결정하는 기준 속도
+    // 프레임 수를 사용한다.
+    public float standardAttackSpeed;
+    public float attackSpeed;
 
     // 추적 대상 플레이어
     protected GameObject targetPlayer;

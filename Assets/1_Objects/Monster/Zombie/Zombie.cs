@@ -27,6 +27,7 @@ public class Zombie : Monster
 
     protected override void Update()
     {
+        anim.speed = 1f;
         CheckPlayerNear();
         MoveBody();
         RotateBody();
@@ -62,7 +63,8 @@ public class Zombie : Monster
         // 공격 상태에서는 멈추도록 한다
         isWalk = isNear && !isAttack;
         anim.SetBool("IsWalking", isWalk);
-        anim.speed = isWalk ? accSpeed / standardAccSpeed : 1f;
+        if(isWalk)
+            anim.speed = accSpeed / standardAccSpeed;
     }
 
     void RotateBody()
@@ -70,9 +72,17 @@ public class Zombie : Monster
         if (isNear)
             rotationDest = Mathv.CalcDegrees(rigidBody.position, targetPlayer.transform.position);
     }
+
     void AttackPlayer()
     {
         anim.SetBool("IsAttacking", isAttack);
+        if (isAttack)
+            anim.speed = attackSpeed / standardAttackSpeed;
+    }
+
+    public void OnAttack()
+    {
+        print("[Zombie] Attack event occured");
     }
 
     void TrackPlayer()
