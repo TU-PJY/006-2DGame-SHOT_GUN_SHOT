@@ -475,7 +475,7 @@ MonoBehaviour:
   lineWeight: 0.03
   player: {fileID: 4423509621317038391}
   startOffsetY: 1.15
-  endOffsetY: 7.5
+  endOffsetY: 6.5
   centerOffsetX: 0.46
   startOffsetX: 0.21
   endOffsetX: 2.5
@@ -638,7 +638,7 @@ MonoBehaviour:
   lineWeight: 0.03
   player: {fileID: 4423509621317038391}
   startOffsetY: 1.15
-  endOffsetY: 7.5
+  endOffsetY: 6.5
   centerOffsetX: 0.46
   startOffsetX: -0.21
   endOffsetX: -2.5
@@ -800,8 +800,8 @@ MonoBehaviour:
   line: {fileID: 2477059773554609703}
   lineWeight: 0.03
   player: {fileID: 4423509621317038391}
-  startOffsetY: 2
-  endOffsetY: 6.5
+  startOffsetY: 2.5
+  endOffsetY: 5.5
   centerOffsetX: 0.46
   startOffsetX: 0
   endOffsetX: 0

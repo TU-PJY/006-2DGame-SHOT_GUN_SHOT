@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public MonsterPool MyPool { set; private get; }
+
     public Rigidbody2D rigidBody;
     public Animator anim;
 

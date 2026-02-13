@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.ParticleSystem;
 
 enum moveDir
 {

@@ -17,6 +17,7 @@ public class Zombie : Monster
 
         // 초기 회전 값 랜덤 설정
         rotation = Random.Range(0f, 180f);
+        rigidBody.rotation = rotation;
     }
 
     protected override void Start()

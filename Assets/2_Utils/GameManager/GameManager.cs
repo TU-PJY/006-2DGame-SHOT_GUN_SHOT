@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 
     public float mouseSensivity;
 
-    private List<Monster> monsterList = new();
-
     void Awake()
     {
         if(Inst && Inst == this)
