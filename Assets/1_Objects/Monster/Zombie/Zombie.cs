@@ -88,7 +88,7 @@ public class Zombie : Monster
     void TrackPlayer()
     {
         // 회전 시 선형보간으로 부드럽게 회전
-        rigidBody.rotation = Mathf.LerpAngle(rigidBody.rotation, rotationDest, 2f * Time.fixedDeltaTime);
+        rigidBody.rotation = Mathf.LerpAngle(rigidBody.rotation, rotationDest, 5f * Time.fixedDeltaTime);
 
         // 힘을 로컬 기준 앞으로만 가함
         // -90도 회전 오프셋이 있으므로 right 벡터 사용
