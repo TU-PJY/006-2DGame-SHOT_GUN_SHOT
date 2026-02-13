@@ -7,32 +7,17 @@ public static class MatrixTransform
         T = Matrix4x4.identity;
     }
 
-    public static void Translate(ref Matrix4x4 T, Vector3 val)
-    {
-        T *= Matrix4x4.Translate(val);
-    }
-
-    public static void Rotate(ref Matrix4x4 T, Vector3 val)
-    {
-        T *= Matrix4x4.Rotate(Quaternion.Euler(val));
-    }
-
-    public static void Scale(ref Matrix4x4 T, Vector3 val)
-    {
-        T *= Matrix4x4.Scale(val);
-    }
-
-     public static void Translate2D(ref Matrix4x4 T, Vector2 val)
+    public static void Translate(ref Matrix4x4 T, Vector2 val)
     {
         T *= Matrix4x4.Translate((Vector3)val);
     }
 
-    public static void Rotate2D(ref Matrix4x4 T, float val)
+    public static void Rotate(ref Matrix4x4 T, float val)
     {
         T *= Matrix4x4.Rotate(Quaternion.Euler(0f, 0f, val));
     }
 
-    public static void Scale2D(ref Matrix4x4 T, Vector2 val)
+    public static void Scale(ref Matrix4x4 T, Vector2 val)
     {
         T *= Matrix4x4.Scale((Vector3)val);
     }

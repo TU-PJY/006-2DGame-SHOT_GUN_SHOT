@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -71,8 +72,7 @@ public class PlayerController : MonoBehaviour
         rotation -= Input.mousePositionDelta.x * GameManager.Inst.mouseSensivity;
 
         // 0 ~ 360도 사이에서만 회전하도록 클램프
-        if(rotation > 360f)    rotation = 0f;
-        else if(rotation < 0f) rotation = 360f;
+        rotation = (rotation + 360f) % 360f;
     }
 
     void UpdateAcc() // 가속도 업데이트
@@ -104,17 +104,20 @@ public class PlayerController : MonoBehaviour
         legAnim.SetBool("IsStrafeLeft", strafingLeft);
         legAnim.SetBool("IsStrafeRight", strafingRight);
 
-        // 다리 애니메이션은 몸통 애니메이션과 재생 시간 동기화
-        var animState = anim.GetCurrentAnimatorStateInfo(0);
+        // 특정 상태가 현재 활성화 되었는지 확인
+        Predicate<string> checkState = (name) => legAnim.GetCurrentAnimatorStateInfo(0).IsName(name);
 
-        if (walking)
-            legAnim.Play("IsWalking", 0, animState.normalizedTime);
-        if (running)
-            legAnim.Play("IsRunning", 0, animState.normalizedTime);
-        if (strafingLeft)
-            legAnim.Play("IsStrafeLeft", 0, animState.normalizedTime);
-        if (strafingRight)
-            legAnim.Play("IsStrafeRight", 0, animState.normalizedTime);
+        // 다리 애니메이션은 몸통 애니메이션과 재생 시간 동기화
+        var animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        if (walking && checkState("IsWalking"))
+            legAnim.Play("IsWalking", 0, animTime);
+        if (running && checkState("IsRunning"))
+            legAnim.Play("IsRunning", 0, animTime);
+        if (strafingLeft && checkState("IsStrafeLeft"))
+            legAnim.Play("IsStrafeLeft", 0, animTime);
+        if (strafingRight && checkState("IsStrafeRight"))
+            legAnim.Play("IsStrafeRight", 0, animTime);
     }
 
     void UpdateBody() // 실제 바디 움직임 업데이트

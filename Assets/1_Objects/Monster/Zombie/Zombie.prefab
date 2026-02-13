@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 92019676916218293}
   - component: {fileID: 1803585708911033811}
   - component: {fileID: 5455904943379594801}
+  - component: {fileID: 2137616360460090778}
   m_Layer: 8
   m_Name: Zombie
   m_TagString: Enemy
@@ -48,6 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576023500410f004d803095ba62cbc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Zombie
+  rigidBody: {fileID: 1803585708911033811}
+  anim: {fileID: 92019676916218293}
+  visonRange: 5
+  linearDamping: 10
+  standardAccSpeed: 16
+  accSpeed: 16
+  attackInterval: 5
 --- !u!212 &7772376037535370840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -116,7 +124,7 @@ Animator:
   m_GameObject: {fileID: 8071112650229627767}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: abc1d0aeffbc8aa4e82549a1d0499f4d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -189,5 +197,41 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
+  m_Offset: {x: 0.02353692, y: 0}
+  m_Radius: 0.98924494
+--- !u!58 &2137616360460090778
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071112650229627767}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1.34

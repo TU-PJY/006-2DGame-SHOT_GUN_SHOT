@@ -28,8 +28,8 @@ public class CameraController : MonoBehaviour
     {
         // 시작 시 카메라가 초기 상태와 완전히 일치하도록 설정
         defaultCamZoom = cam.orthographicSize;
-        camZoom = defaultCamZoom;
-        camRot = targetObject.transform.rotation.eulerAngles.z - 90f;
+        camZoom        = defaultCamZoom;
+        camRot         = targetObject.transform.rotation.eulerAngles.z - 90f;
     }
 
     void LateUpdate()
@@ -43,9 +43,9 @@ public class CameraController : MonoBehaviour
         camRot = Mathf.LerpAngle(camRot, targetRot, Time.deltaTime * rotationLerpSpeed);
 
         T.Identity(ref camMatrix);
-        T.Translate2D(ref camMatrix, targetPos);
-        T.Rotate2D(ref camMatrix, camRot);
-        T.Translate2D(ref camMatrix, Offset);
+        T.Translate(ref camMatrix, targetPos);
+        T.Rotate(ref camMatrix, camRot);
+        T.Translate(ref camMatrix, Offset);
         T.Dispatch(transform, ref camMatrix);
 
         // 달리는 동안에는 카메라 줌 아웃 // 달리지 않으면 줌 인
