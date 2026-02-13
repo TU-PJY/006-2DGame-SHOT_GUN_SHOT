@@ -10,23 +10,30 @@ public class MonsterGenerator : MonoBehaviour
 
     void Start()
     {
-        for(int i  = 0; i < initialMonsterCount; i ++)
-            UpdateGenerateOperation();
+        for (int i = 0; i < initialMonsterCount; i++)
+            GenerateOperation();
     }
 
     void Update()
     {
-        UpdateGenerateOperation();
+        TimerOperation();
     }
 
-    void UpdateGenerateOperation()
+    void TimerOperation()
     {
         // 델타 시간을 더해 실제 타이머처럼 사용
         currentTime += Time.deltaTime;
         if(currentTime >= generateInterval)
         {
-            var inst = pool.GetMonster();
-            inst.transform.position = new Vector2(Random.Range(0f, 0f), Random.Range(1f, 1f));
+            GenerateOperation();
+            currentTime -= generateInterval;
         }
+    }
+
+    void GenerateOperation()
+    {
+        var inst = pool.GetMonster();
+        // 일단은 테스트를 위해 좁은 범위에서 대충 생성해본다.
+        inst.transform.position = new Vector2(Random.Range(-20, 20f), Random.Range(20f, 20f));
     }
 }

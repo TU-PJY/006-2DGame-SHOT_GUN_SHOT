@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Zombie
   rigidBody: {fileID: 1803585708911033811}
   anim: {fileID: 92019676916218293}
-  visonRange: 5
+  visonRange: 30
   linearDamping: 10
   standardAccSpeed: 16
   accSpeed: 16
