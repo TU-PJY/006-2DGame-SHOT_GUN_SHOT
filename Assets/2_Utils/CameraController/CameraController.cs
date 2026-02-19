@@ -26,7 +26,6 @@ public class CameraController : MonoBehaviour
     private float currentShake;
     private Vector2 shakeOffset;
 
-
     void Awake()
     {
         if (Inst && Inst == this)

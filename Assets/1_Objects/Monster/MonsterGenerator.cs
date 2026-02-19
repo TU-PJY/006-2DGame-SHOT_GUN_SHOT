@@ -11,7 +11,7 @@ public enum SpawnDir
 
 public class MonsterGenerator : MonoBehaviour
 {
-    public MonsterPool pool;
+    public ObjectPool pool;
     public float initialMonsterCount;
     public float generateInterval;
     public Vector2 mapSize;

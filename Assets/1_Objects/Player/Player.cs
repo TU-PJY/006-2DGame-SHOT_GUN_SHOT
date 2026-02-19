@@ -53,8 +53,15 @@ public class Player : MonoBehaviour
         InputKey();
         UpdateAcc();
         UpdateAnim();
-        if(shotgun != null)
+
+        if (shotgun != null)
+        {
+            // 소지한 총에 위치, 회전, 오프셋 전달
+            shotgun.InputPositionAndRotation(rigidBody.position, rotation, new Vector2(4f, 0f));
+
+            // 소지한 총의 전체적인 동작 업데이트
             shotgun.UpdateShotgun();
+        }
     }
 
     private void LateUpdate()

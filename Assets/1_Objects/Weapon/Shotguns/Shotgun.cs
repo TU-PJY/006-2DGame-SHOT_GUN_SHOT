@@ -1,8 +1,12 @@
 using System;
 using UnityEngine;
 
+using T = MatrixTransform;
+
 public class Shotgun : MonoBehaviour
 {
+    public ObjectPool pool; // 충구 화염을 생성하기 위한 오브잭트 풀
+
     public int   maxAmmo; // 최대 장탄수
     public int   pelletCount; // 펠릿 개수
     public int   pelletDamage; // 펠릿 당 대미지
@@ -18,6 +22,10 @@ public class Shotgun : MonoBehaviour
     private float currentReloadTime ; // 현재 재장전 간격 측정 누적 시간
     private int currentAmmo; // 현재 장탄 수
 
+    private Vector2 playerPos;
+    private float playerRotation;
+    private Vector2 playerOffset;
+
     public void ResetState()
     {
         currentAmmo = maxAmmo;
@@ -30,6 +38,13 @@ public class Shotgun : MonoBehaviour
     public int GetCurrentAmmo()
     {
         return currentAmmo;
+    }
+
+    public void InputPositionAndRotation(Vector2 position, float degrees, Vector2 offset)
+    {
+        playerPos = position;
+        playerRotation = degrees;
+        playerOffset = offset;
     }
 
     public void PullTrigger()
@@ -80,6 +95,17 @@ public class Shotgun : MonoBehaviour
         {
             currentAmmo--;
             CameraController.Inst.AddShake(recoil); // 카메라에 흔들림 추가
+            var inst = pool.GetMuzzleFire(); // 총구 화염 오브젝트 생성
+
+            // 특정 위치에 새로운 총구 화염 배치
+            Matrix4x4 fireMatrix = new();
+            T.Identity(ref fireMatrix);
+            T.Translate(ref fireMatrix, playerPos);
+            T.Rotate(ref fireMatrix, playerRotation);
+            T.Translate(ref fireMatrix, playerOffset);
+            T.Scale(ref fireMatrix, new Vector2(0.3f, 0.3f));
+            T.Dispatch(inst.transform, ref fireMatrix);
+
             currentFireIntervalTime += fireInterval; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }
     }

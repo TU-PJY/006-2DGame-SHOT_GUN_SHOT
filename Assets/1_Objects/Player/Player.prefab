@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 4176915413123634666}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.317, y: -0.127, z: 0}
+  m_LocalPosition: {x: -0.197, y: -0.127, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,7 +259,7 @@ MonoBehaviour:
   linearDamping: 10
   accSpeed: 60
   runSpeedRatio: 1.5
-  shotgun: {fileID: 2541493581272979456, guid: 33d02e7e15fafca4d94ce49ad238566f, type: 3}
+  shotgun: {fileID: -6038716875156518231, guid: 33d02e7e15fafca4d94ce49ad238566f, type: 3}
   runFlag: 0
 --- !u!50 &8811263906739358779
 Rigidbody2D:
