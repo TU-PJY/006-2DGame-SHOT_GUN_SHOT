@@ -19,6 +19,5 @@ public class GameManager : MonoBehaviour
 
         print("[GameManager] Created new instance.");
         Inst = this;
-        DontDestroyOnLoad(this);
     }
 }

@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public float accSpeed;
     public float runSpeedRatio;
 
+    public Shotgun shotgun;
+
     private bool[] moveFlag = new bool[]{false, false, false, false};
     private Vector2 force;
     private float rotation;
@@ -39,6 +41,10 @@ public class Player : MonoBehaviour
         // 마우스 고정 후 숨김
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // 총기 리셋 후 시작
+        if (shotgun != null)
+            shotgun.ResetState();
     }
 
     void Update()
@@ -47,6 +53,20 @@ public class Player : MonoBehaviour
         InputKey();
         UpdateAcc();
         UpdateAnim();
+        if(shotgun != null)
+            shotgun.UpdateShotgun();
+    }
+
+    private void LateUpdate()
+    {
+        // 카메라에 달리기 여부 전달
+        CameraController.Inst.InputRunState(runFlag);
+
+        // 카메라에 회전값 전달
+        CameraController.Inst.InputPlayerRotation(rotation);
+
+        // 카메라에 위치값 전달
+        CameraController.Inst.InputPlayerPos(rigidBody.position);
     }
 
     void FixedUpdate()
@@ -65,6 +85,10 @@ public class Player : MonoBehaviour
         // 달리기는 forward 방향으로만 가능하다.
         // 앞 뒤를 둘 다 누르고 있을 경우 비활성화 한다
         runFlag = moveFlag[(int)moveDir.Up] && !moveFlag[(int)moveDir.Down] && Input.GetKey(KeyCode.LeftShift);
+
+        // R키 누를 시 현재 가지고 있는 샷건 재장전 활성화
+        if(shotgun != null && Input.GetKeyDown(KeyCode.R))
+            shotgun.StartReload();
     }
 
     void InputMouse()
@@ -74,6 +98,14 @@ public class Player : MonoBehaviour
 
         // 0 ~ 360도 사이에서만 회전하도록 클램프
         rotation = (rotation + 360f) % 360f;
+
+        // 좌 클릭 시 현재 가지고 있는 샷건 발사
+        if (shotgun != null && Input.GetMouseButtonDown(0))
+            shotgun.PullTrigger();
+
+        // 좌 클릭 뗄 시 현재 가지고 있는 샷건 발사 중단
+        else if (shotgun != null && Input.GetMouseButtonUp(0))
+            shotgun.ReleaseTrigger();
     }
 
     void UpdateAcc() // 가속도 업데이트
@@ -95,7 +127,7 @@ public class Player : MonoBehaviour
         bool strafingLeft  = moveFlag[(int)moveDir.Left] && !moveFlag[(int)moveDir.Right];
         bool strafingRight = moveFlag[(int)moveDir.Right] && !moveFlag[(int)moveDir.Left];
         bool walking       = movingUp || movingDown || movingStrafe;
-        bool running       = runFlag;
+        bool running       = runFlag && walking;
 
         anim.SetBool("IsWalking", walking);
         anim.SetBool("IsRunning", running);
