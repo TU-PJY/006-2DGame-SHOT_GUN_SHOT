@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public ObjectPool MyPool { set; private get; }
+    [HideInInspector]
+    public ObjectManager MyPool { set; private get; }
 
     public Rigidbody2D rigidBody;
     public Animator anim;
@@ -75,5 +76,15 @@ public class Monster : MonoBehaviour
     public virtual void ResetState()
     {
         
+    }
+
+    public virtual void GiveDamage(int damage)
+    {
+
+    }
+
+    protected virtual void DeleteInstance()
+    {
+        MyPool.ReturnMonster(this);
     }
 }

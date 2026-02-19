@@ -1,14 +1,15 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectManager : MonoBehaviour
 {
     public Monster monsterPrefab;
     public MuzzleFire muzzleFirePrefab;
+    public Pellet pelletPrefab;
     
     private List<Monster> monsterPool = new();
     private List<MuzzleFire> muzzleFirePool = new();
+    private List<Pellet> pelletPool = new();
 
     public T GetInstance<T> (ref List<T> pool, T preFab) where T : MonoBehaviour
     {
@@ -33,7 +34,6 @@ public class ObjectPool : MonoBehaviour
         if (pool.Contains(instance))
             return;
         instance.gameObject.SetActive(false);
-       // instance.transform.SetParent(transform);
         pool.Add(instance);
     }
 
@@ -51,6 +51,13 @@ public class ObjectPool : MonoBehaviour
         return newInst;
     }
 
+    public Pellet GetPellet()
+    {
+        var newInst = GetInstance(ref pelletPool, pelletPrefab);
+        newInst.MyPool = this;
+        return newInst;
+    }
+
     public void ReturnMonster(Monster m)
     {
         ReturnInstance(ref monsterPool, m);
@@ -59,5 +66,10 @@ public class ObjectPool : MonoBehaviour
     public void ReturnMuzzleFire(MuzzleFire m)
     {
         ReturnInstance(ref muzzleFirePool, m);
+    }
+
+    public void ReturnPellet(Pellet p)
+    {
+        ReturnInstance(ref pelletPool, p);
     }
 }

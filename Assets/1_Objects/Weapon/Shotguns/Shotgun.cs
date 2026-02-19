@@ -5,13 +5,13 @@ using T = MatrixTransform;
 
 public class Shotgun : MonoBehaviour
 {
-    public ObjectPool pool; // 충구 화염을 생성하기 위한 오브잭트 풀
+    public ObjectManager pool; // 충구 화염을 생성하기 위한 오브잭트 풀
 
     public int   maxAmmo; // 최대 장탄수
     public int   pelletCount; // 펠릿 개수
     public int   pelletDamage; // 펠릿 당 대미지
     public float pelletDisperse; // 펠릿 퍼짐 수치 // 클 수록 더 넓게 퍼짐
-    public float maxDistance; // 펠릿이 대미지를 줄 수 있는 거리
+    public float pelletDistance; // 펠릿이 대미지를 줄 수 있는 거리
     public float fireInterval; // 발사 간격
     public float pelletReloadInterval; // 펠릿 당 장전 시간
     public float recoil; // 반동 // 클 수록 카메라가 더 많이 흔들림
@@ -95,17 +95,25 @@ public class Shotgun : MonoBehaviour
         {
             currentAmmo--;
             CameraController.Inst.AddShake(recoil); // 카메라에 흔들림 추가
-            var inst = pool.GetMuzzleFire(); // 총구 화염 오브젝트 생성
+            var muzzleFire = pool.GetMuzzleFire(); // 총구 화염 오브젝트 생성
 
-            // 특정 위치에 새로운 총구 화염 배치
-            Matrix4x4 fireMatrix = new();
-            T.Identity(ref fireMatrix);
-            T.Translate(ref fireMatrix, playerPos);
-            T.Rotate(ref fireMatrix, playerRotation);
-            T.Translate(ref fireMatrix, playerOffset);
-            T.Scale(ref fireMatrix, new Vector2(0.3f, 0.3f));
-            T.Dispatch(inst.transform, ref fireMatrix);
+            // 총구 위치에 새로운 총구 화염 배치
+            Matrix4x4 muzzleMatrix = new();
+            T.Identity(ref muzzleMatrix);
+            T.Translate(ref muzzleMatrix, playerPos);
+            T.Rotate(ref muzzleMatrix, playerRotation);
+            T.Translate(ref muzzleMatrix, playerOffset);
+            T.Scale(ref muzzleMatrix, new Vector2(0.3f, 0.3f));
+            T.Dispatch(muzzleFire.transform, ref muzzleMatrix);
 
+            // 총구 위치에 새로운 펠릿(ray) 배치
+            var pellet = pool.GetPellet();
+            T.Translate(ref muzzleMatrix, new Vector2(-playerOffset.x * 1.5f, 0f));
+            T.Dispatch(pellet.transform, ref muzzleMatrix);
+            pellet.pelletCount = pelletCount;
+            pellet.pelletDisperse = pelletDisperse;
+            pellet.pelletDistance = pelletDistance;
+            pellet.ResetState();
             currentFireIntervalTime += fireInterval; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }
     }

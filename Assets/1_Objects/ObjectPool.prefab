@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonsterPool
   monsterPrefab: {fileID: 3252967295721703637, guid: b874ce4e4b70409468f4bd195d3c99b5, type: 3}
   muzzleFirePrefab: {fileID: 8783107829990065279, guid: 13fdbcae3e939824ab80e5ca0ebeca1f, type: 3}
+  pelletPrefab: {fileID: 7720564769820390239, guid: 4f8a8410c5f36f444ba6c3816690e735, type: 3}

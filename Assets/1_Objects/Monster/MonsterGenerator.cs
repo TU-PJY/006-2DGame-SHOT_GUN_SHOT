@@ -11,7 +11,7 @@ public enum SpawnDir
 
 public class MonsterGenerator : MonoBehaviour
 {
-    public ObjectPool pool;
+    public ObjectManager pool;
     public float initialMonsterCount;
     public float generateInterval;
     public Vector2 mapSize;
@@ -44,6 +44,7 @@ public class MonsterGenerator : MonoBehaviour
     void GenerateOperation()
     {
         var inst = pool.GetMonster();
+        inst.ResetState();
 
         // 맵의 가장자리 4방향 중 하나를 선택
         var spawnEdge = spawnDir[Random.Range(0, 3)];
