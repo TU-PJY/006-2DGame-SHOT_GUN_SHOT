@@ -73,8 +73,8 @@ public class PelletManager : MonoBehaviour
     {
         for (int i = 0; i < iteration; i++)
         {
-            float radian = (rayRot + Random.Range(-disperse, disperse)) * Mathf.Deg2Rad;
-            Vector2 direction = Math_.AngleDirection(radian);
+            float radians = Math_.Radians(rayRot + Random.Range(-disperse, disperse));
+            Vector2 direction = Math_.AngleDirection(radians);
             RaycastHit2D hit = Physics2D.Raycast(rayPos, direction, distance);
             RayStartEnd rayStartEnd = new(Math_.OffsetPosition(rayPos, direction, 1f), Math_.OffsetPosition(rayPos, direction, distance));
 
@@ -95,7 +95,7 @@ public class PelletManager : MonoBehaviour
 
                         var newBloodStain = ObjectManager.Inst.GetBloodStain();
                         newBloodStain.transform.position = hit.point;
-                        newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, rayRot);
+                        newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180f, 180f));
                         newBloodStain.ResetState();
                     }
                 }

@@ -101,4 +101,9 @@ public class CameraController : MonoBehaviour
             currentShakeIntervalTime -= 0.01f;
         }
     }
+
+    public float GetRotation()
+    {
+        return camRot;
+    }
 }

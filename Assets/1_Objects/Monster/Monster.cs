@@ -80,8 +80,12 @@ public class Monster : MonoBehaviour
 
     }
 
+    // 몬스터 사망 시 BloodExplode 객체를 생성 후 오브젝트 풀로 반환된다.
     protected virtual void DeleteInstance()
     {
+        var newBloodExplosion = ObjectManager.Inst.GetBloodExplode();
+        newBloodExplosion.transform.position = transform.position;
+        newBloodExplosion.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180, 180));
         ObjectManager.Inst.ReturnMonster(this);
     }
 }

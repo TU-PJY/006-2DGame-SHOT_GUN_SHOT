@@ -49,3 +49,4 @@ MonoBehaviour:
   pelletRendererPrefab: {fileID: 2358929134826633958, guid: 266e0bfcd292a1446b32306d5ba809c9, type: 3}
   hitIndPrefab: {fileID: 7772443292743248460, guid: 48a9783c84fcebb4087abdc32de5006e, type: 3}
   bloodStainIndPrefab: {fileID: -6101185379404786246, guid: e47be08e8d7245745aa8ece3e083ea8a, type: 3}
+  bloodExplodePrefab: {fileID: 4671899626090247933, guid: 28cace5b436c6c74daad1f6ed9950123, type: 3}

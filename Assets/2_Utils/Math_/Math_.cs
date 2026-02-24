@@ -47,4 +47,14 @@ public static class Math_
         InputT = Mathf.Clamp(InputT, 0f, 1f);
         return Vector2.Lerp(src, dst, InputT);
     }
+
+    public static float Radians(float degrees)
+    {
+        return degrees * Mathf.Deg2Rad;
+    }
+
+    public static float Degrees(float radians)
+    {
+        return radians * Mathf.Rad2Deg;
+    }
 }

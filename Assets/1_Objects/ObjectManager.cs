@@ -10,12 +10,14 @@ public class ObjectManager : MonoBehaviour
     public PelletRenderer pelletRendererPrefab;
     public HitIndicator hitIndPrefab;
     public BloodStain bloodStainIndPrefab;
+    public BloodExplode bloodExplodePrefab;
     
     private List<Monster> monsterPool = new();
     private List<MuzzleFire> muzzleFirePool = new();
     private List<PelletRenderer> pelletRendererPool = new();
     private List<HitIndicator> hitIndPool = new();
     private List<BloodStain> bloodStainPool = new();
+    private List<BloodExplode> bloodExplodePool = new();
 
     void Awake()
     {
@@ -80,6 +82,11 @@ public class ObjectManager : MonoBehaviour
         return GetInstance(ref bloodStainPool, bloodStainIndPrefab);
     }
 
+    public BloodExplode GetBloodExplode()
+    {
+        return GetInstance(ref bloodExplodePool, bloodExplodePrefab);
+    }
+
     public void ReturnMonster(Monster m)
     {
         ReturnInstance(ref monsterPool, m);
@@ -103,5 +110,10 @@ public class ObjectManager : MonoBehaviour
     public void ReturnBloodStain(BloodStain b)
     {
         ReturnInstance(ref bloodStainPool, b);
+    }
+
+    public void ReturnBloodExplode(BloodExplode b)
+    {
+        ReturnInstance(ref bloodExplodePool, b);
     }
 }
