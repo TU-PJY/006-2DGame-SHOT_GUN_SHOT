@@ -49,7 +49,7 @@ MonoBehaviour:
   pelletCount: 12
   pelletDamage: 10
   pelletDisperse: 20
-  pelletDistance: 20
+  pelletDistance: 10
   fireInterval: 1
   pelletReloadInterval: 0.5
   recoil: 1

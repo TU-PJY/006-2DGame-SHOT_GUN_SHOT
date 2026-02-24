@@ -91,11 +91,11 @@ public class CameraController : MonoBehaviour
     {
         currentShake = Mathf.Lerp(currentShake, 0f, Time.deltaTime * shakeReduction);
         currentShakeIntervalTime += Time.deltaTime;
-        if (currentShakeIntervalTime >= 0.02f)
+        if (currentShakeIntervalTime >= 0.01f)
         {
             shakeOffset.x = Random.Range(-currentShake, currentShake);
             shakeOffset.y = Random.Range(-currentShake, currentShake);
-            currentShakeIntervalTime -= 0.02f;
+            currentShakeIntervalTime -= 0.01f;
         }
     }
 }

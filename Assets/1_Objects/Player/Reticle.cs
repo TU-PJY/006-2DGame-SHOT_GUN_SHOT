@@ -13,8 +13,9 @@ public class Reticle : MonoBehaviour
 
     void Awake()
     {
-        line.material = new Material(Shader.Find("Sprites/Default"));
         line.positionCount = 2;
+        line.startColor = new Color(0f, 1f, 0f, 1f);
+        line.endColor = new Color(0f, 1f, 0f, 1f);
         SetPosition();
     }
 
