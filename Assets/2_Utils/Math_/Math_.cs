@@ -57,4 +57,13 @@ public static class Math_
     {
         return radians * Mathf.Rad2Deg;
     }
+
+    public static Vector2 Clamp(Vector2 src, Vector2 min, Vector2 max)
+    {
+        var x = src.x;
+        var y = src.y;
+        x = Mathf.Clamp(x, min.x, max.y);
+        y = Mathf.Clamp(y, min.y, max.y);
+        return new Vector2(x, y);
+    }
 }

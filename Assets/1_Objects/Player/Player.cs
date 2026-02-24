@@ -168,6 +168,7 @@ public class Player : MonoBehaviour
         // 회전 방향을 향하는 force
         Vector2 relForce = transform.right * force.y - transform.up * force.x;
 
-        rigidBody.AddForce(relForce.normalized * accSpeed * runAccRatio, ForceMode2D.Force);     
+        rigidBody.AddForce(relForce.normalized * accSpeed * runAccRatio, ForceMode2D.Force);   
+        rigidBody.position = Math_.Clamp(rigidBody.position, new Vector2(-25f, -25f), new Vector2(25f, 25f));  
     }
 }
