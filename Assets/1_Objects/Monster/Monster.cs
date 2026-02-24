@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public ObjectManager MyPool { set; private get; }
-
     public Rigidbody2D rigidBody;
     public Animator anim;
 
@@ -84,6 +82,6 @@ public class Monster : MonoBehaviour
 
     protected virtual void DeleteInstance()
     {
-        MyPool.ReturnMonster(this);
+        ObjectManager.Inst.ReturnMonster(this);
     }
 }

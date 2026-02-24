@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558ca435c7c8c8f4681684bc95acc5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::M1897
-  pool: {fileID: 7372624401983203634, guid: 451823f086568844a9e8a1fd5fbe99f1, type: 3}
   maxAmmo: 6
-  pelletCount: 12
+  pelletCount: 8
   pelletDamage: 10
-  pelletDisperse: 20
+  pelletDisperse: 40
   pelletDistance: 10
   fireInterval: 1
   pelletReloadInterval: 0.5
-  recoil: 1
+  recoil: 0.5
+  muzzleFireAnimSpeed: 1

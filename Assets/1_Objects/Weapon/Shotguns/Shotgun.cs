@@ -13,6 +13,7 @@ public class Shotgun : MonoBehaviour
     public float fireInterval; // 발사 간격
     public float pelletReloadInterval; // 펠릿 당 장전 시간
     public float recoil; // 반동 // 클 수록 카메라가 더 많이 흔들림
+    public float muzzleFireAnimSpeed; // 충구 화염 애니메이션 속도
 
     private bool triggerState; // 방아쇠당긴 상태
     private bool reloadState; // 재장전 상태 // Fire 실행 시 reloadState 취소
@@ -31,7 +32,7 @@ public class Shotgun : MonoBehaviour
         reloadState = false;
         currentFireIntervalTime = 0f;
         currentReloadTime = 0f;
-        BulletIndicator.Inst.InputBulletCount(currentAmmo);// UI에 현재 장탄수 반영
+        BulletCountIndicator.Inst.InputBulletCount(currentAmmo);// UI에 현재 장탄수 반영
     }
 
     public int GetCurrentAmmo()
@@ -95,11 +96,11 @@ public class Shotgun : MonoBehaviour
         {
             currentAmmo--;
 
-            BulletIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
+            BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
             CameraController.Inst.AddShake(recoil); // 카메라에 흔들림 추가
-            var muzzleFire = ObjectManager.Inst.GetMuzzleFire(); // 총구 화염 오브젝트 생성
 
             // 총구 위치에 새로운 총구 화염 배치
+            var muzzleFire = ObjectManager.Inst.GetMuzzleFire(); // 총구 화염 오브젝트 생성
             Matrix4x4 muzzleMatrix = new();
             T.Identity(ref muzzleMatrix);
             T.Translate(ref muzzleMatrix, playerPos);
@@ -107,15 +108,14 @@ public class Shotgun : MonoBehaviour
             T.Translate(ref muzzleMatrix, playerOffset);
             T.Scale(ref muzzleMatrix, new Vector2(0.3f, 0.3f));
             T.Dispatch(muzzleFire.transform, ref muzzleMatrix);
+            muzzleFire.SetAnimSpeed(muzzleFireAnimSpeed);
 
             // 총구 위치에 새로운 펠릿(ray) 배치
-            var pellet = ObjectManager.Inst.GetPellet();
+            var pellet = PelletManager.Inst;
             T.Translate(ref muzzleMatrix, new Vector2(-playerOffset.x * 1.5f, 0f));
             T.Dispatch(pellet.transform, ref muzzleMatrix);
-            pellet.pelletCount = pelletCount;
-            pellet.pelletDisperse = pelletDisperse;
-            pellet.pelletDistance = pelletDistance;
-            pellet.ResetState();
+            pellet.StartRayCast(pelletCount, pelletDisperse, pelletDistance, pelletDamage);
+
             currentFireIntervalTime += fireInterval; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }
     }
@@ -131,7 +131,7 @@ public class Shotgun : MonoBehaviour
         if (currentReloadTime <= 0f)
         {
             currentAmmo++;
-            BulletIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
+            BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
 
             if (currentAmmo == maxAmmo)
             {

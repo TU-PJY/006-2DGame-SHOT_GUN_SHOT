@@ -76,7 +76,8 @@ public class CameraController : MonoBehaviour
         var targetRot = destRotation - 90f;
 
         // Time.deltaTime * rotationLerpSpeed 속도로 회전 각도 선형 변환
-        camRot = targetRot;//Mathf.LerpAngle(camRot, targetRot, Time.deltaTime * rotationLerpSpeed);
+        camRot = Mathf.LerpAngle(camRot, targetRot, Time.deltaTime * rotationLerpSpeed);
+        //camRot = targetRot;
 
         T.Identity(ref camMatrix);
         T.Translate(ref camMatrix, targetPos);

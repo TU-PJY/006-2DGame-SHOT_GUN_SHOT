@@ -7,11 +7,15 @@ public class ObjectManager : MonoBehaviour
 
     public Monster monsterPrefab;
     public MuzzleFire muzzleFirePrefab;
-    public Pellet pelletPrefab;
+    public PelletRenderer pelletRendererPrefab;
+    public HitIndicator hitIndPrefab;
+    public BloodStain bloodStainIndPrefab;
     
     private List<Monster> monsterPool = new();
     private List<MuzzleFire> muzzleFirePool = new();
-    private List<Pellet> pelletPool = new();
+    private List<PelletRenderer> pelletRendererPool = new();
+    private List<HitIndicator> hitIndPool = new();
+    private List<BloodStain> bloodStainPool = new();
 
     void Awake()
     {
@@ -53,23 +57,27 @@ public class ObjectManager : MonoBehaviour
 
     public Monster GetMonster()
     {
-        var newInst = GetInstance(ref monsterPool, monsterPrefab);
-        newInst.MyPool = this;
-        return newInst;
+        return GetInstance(ref monsterPool, monsterPrefab);
     }
 
     public MuzzleFire GetMuzzleFire()
     {
-        var newInst = GetInstance(ref muzzleFirePool, muzzleFirePrefab);
-        newInst.MyPool = this;
-        return newInst;
+        return GetInstance(ref muzzleFirePool, muzzleFirePrefab);
     }
 
-    public Pellet GetPellet()
+    public PelletRenderer GetPelletRenderer()
     {
-        var newInst = GetInstance(ref pelletPool, pelletPrefab);
-        newInst.MyPool = this;
-        return newInst;
+        return GetInstance(ref pelletRendererPool, pelletRendererPrefab);
+    }
+
+    public HitIndicator GetHitIndicator()
+    {
+        return GetInstance(ref hitIndPool, hitIndPrefab);
+    }
+
+    public BloodStain GetBloodStain()
+    {
+        return GetInstance(ref bloodStainPool, bloodStainIndPrefab);
     }
 
     public void ReturnMonster(Monster m)
@@ -82,8 +90,18 @@ public class ObjectManager : MonoBehaviour
         ReturnInstance(ref muzzleFirePool, m);
     }
 
-    public void ReturnPellet(Pellet p)
+    public void ReturnPelletRenderer(PelletRenderer p)
     {
-        ReturnInstance(ref pelletPool, p);
+        ReturnInstance(ref pelletRendererPool, p);
+    }
+
+    public void ReturnHitIndicator(HitIndicator h)
+    {
+        ReturnInstance(ref hitIndPool, h);
+    }
+
+    public void ReturnBloodStain(BloodStain b)
+    {
+        ReturnInstance(ref bloodStainPool, b);
     }
 }
