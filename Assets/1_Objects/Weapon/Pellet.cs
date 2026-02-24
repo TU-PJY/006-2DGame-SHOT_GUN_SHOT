@@ -61,9 +61,9 @@ public class Pellet : MonoBehaviour
             for (int i = 0; i < pelletCount; i++)
             {
                 float radian = (rayRot + Random.Range(-pelletDisperse, pelletDisperse)) * Mathf.Deg2Rad;
-                Vector2 direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+                Vector2 direction = Math_.AngleDirection(radian);
                 RaycastHit2D hit = Physics2D.Raycast(rayPos, direction, pelletDistance);
-                RayStartEnd rayStartEnd = new RayStartEnd(rayPos, rayPos + direction * pelletDistance);
+                RayStartEnd rayStartEnd = new(rayPos, Math_.OffsetPosition(rayPos, direction, pelletDistance));
 
                 // 장애물이나 몬스터와 충돌하면 다음 펠릿 처리
                 if (hit.collider != null)

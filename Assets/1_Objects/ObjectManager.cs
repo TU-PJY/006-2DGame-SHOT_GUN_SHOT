@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    public static ObjectManager Inst;
+
     public Monster monsterPrefab;
     public MuzzleFire muzzleFirePrefab;
     public Pellet pelletPrefab;
@@ -10,6 +12,18 @@ public class ObjectManager : MonoBehaviour
     private List<Monster> monsterPool = new();
     private List<MuzzleFire> muzzleFirePool = new();
     private List<Pellet> pelletPool = new();
+
+    void Awake()
+    {
+        if(Inst && Inst == this)
+        {
+            DestroyImmediate(this);
+            return;
+        }
+
+        Inst = this;
+        print("[ObjectManager] Created instance.");
+    }
 
     public T GetInstance<T> (ref List<T> pool, T preFab) where T : MonoBehaviour
     {

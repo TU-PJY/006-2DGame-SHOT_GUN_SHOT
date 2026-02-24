@@ -62,7 +62,7 @@ public class Zombie : Monster
     void CheckPlayerNear()
     {
          // 플레이가 visonRange에 도달하면 추적 시작
-         isNear = Mathv.CalcDistance(rigidBody.position, targetPlayer.transform.position) < visonRange;
+         isNear = Math_.CalcDistance(rigidBody.position, targetPlayer.transform.position) < visonRange;
     }
 
     void MoveBody()
@@ -77,7 +77,7 @@ public class Zombie : Monster
     void RotateBody()
     {
         if (isNear)
-            rotationDest = Mathv.CalcDegrees(rigidBody.position, targetPlayer.transform.position);
+            rotationDest = Math_.CalcDegrees(rigidBody.position, targetPlayer.transform.position);
     }
 
     void AttackPlayer()

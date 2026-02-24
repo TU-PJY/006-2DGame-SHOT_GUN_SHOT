@@ -44,6 +44,8 @@ public class CameraController : MonoBehaviour
         defaultCamZoom = cam.orthographicSize;
         camZoom        = defaultCamZoom;
         camRot         = destRotation - 90f;
+
+        print("[CameraController] Created instance.");
     }
 
     public void InputPlayerPos(Vector2 position)

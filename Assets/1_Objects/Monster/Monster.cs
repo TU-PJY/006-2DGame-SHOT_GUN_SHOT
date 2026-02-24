@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [HideInInspector]
     public ObjectManager MyPool { set; private get; }
 
     public Rigidbody2D rigidBody;
