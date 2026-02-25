@@ -6,4 +6,10 @@ public static class Range_
     {
         return rangeMin <= val && val <= rangeMax;
     }
+
+    public static bool Propability(int percentage)
+    {
+        var randVal = Random.Range(1, 101);
+        return 1 <= randVal && randVal <= percentage;
+    }
 }

@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterGenerator
   initialMonsterCount: 0
-  generateInterval: 3
+  generateInterval: 2
   mapSize: {x: 25, y: 25}

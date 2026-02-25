@@ -4059,10 +4059,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: St_GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6629017979032333837, guid: 648468f48194abc42b75e61a78310440, type: 3}
-      propertyPath: startRound
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7728055656974113088, guid: 648468f48194abc42b75e61a78310440, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.05719
@@ -6906,10 +6902,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1847398650856296222, guid: f4818bf7ddf4c8549b0f6902aa58fd88, type: 3}
-      propertyPath: generateInterval
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5546830348818009857, guid: f4818bf7ddf4c8549b0f6902aa58fd88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.05719

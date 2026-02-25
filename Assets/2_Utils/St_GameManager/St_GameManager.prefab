@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mouseSensivity: 0.15
-  startRound: 1
+  startRound: 2
   startEnemyCount: 5
   enemyIncrease: 5
   currentRound: 0
