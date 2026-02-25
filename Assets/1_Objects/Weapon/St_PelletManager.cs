@@ -15,9 +15,9 @@ struct RayStartEnd
 }
 
 // 여러 개의 펠릿을 여러개의 Ray로 처리하여 몬스터 피격 처리
-public class PelletManager : MonoBehaviour
+public class St_PelletManager : MonoBehaviour
 {
-    public static PelletManager Inst;
+    public static St_PelletManager Inst;
 
     private int iteration; // 펠릿 개수 (ray 개수) // 오브젝트 풀에서 생성 시 개수 입력 후 활성화
     private float disperse; // 펠릿이 퍼지는 각도
@@ -63,7 +63,7 @@ public class PelletManager : MonoBehaviour
         ProcessRayCast();
         foreach(var p in rayPosList)
         {
-            var newPelletRenderer = ObjectManager.Inst.GetPelletRenderer();
+            var newPelletRenderer = St_ObjectManager.Inst.GetPelletRenderer();
             newPelletRenderer.SetPosition(p.start, p.end);
         }
 
@@ -93,11 +93,11 @@ public class PelletManager : MonoBehaviour
                             rayStartEnd.end = hit.point;
 
                             // 몬스터와 충돌한 곳에 피격 인디케이터 객체와 피 객체 생성
-                            var newHitInd = ObjectManager.Inst.GetHitIndicator();
+                            var newHitInd = St_ObjectManager.Inst.GetHitIndicator();
                             newHitInd.transform.position = hit.point;
                             newHitInd.ResetState();
 
-                            var newBloodStain = ObjectManager.Inst.GetBloodStain();
+                            var newBloodStain = St_ObjectManager.Inst.GetBloodStain();
                             newBloodStain.transform.position = hit.point;
                             newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180f, 180f));
                             newBloodStain.ResetState();

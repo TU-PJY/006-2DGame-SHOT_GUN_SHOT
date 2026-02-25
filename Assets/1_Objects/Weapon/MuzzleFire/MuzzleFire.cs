@@ -13,6 +13,6 @@ public class MuzzleFire : MonoBehaviour
 
     public void DestroyMuzzleFire()
     {
-        ObjectManager.Inst.ReturnMuzzleFire(this);
+        St_ObjectManager.Inst.ReturnMuzzleFire(this);
     }
 }

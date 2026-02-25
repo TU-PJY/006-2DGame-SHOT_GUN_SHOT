@@ -4,6 +4,6 @@ public class BloodExplode : MonoBehaviour
 {
     public void OnDestroyBlood()
     {
-        ObjectManager.Inst.ReturnBloodExplode(this);
+        St_ObjectManager.Inst.ReturnBloodExplode(this);
     }
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 using T = MatrixTransform;
 
-public class CameraController : MonoBehaviour
+public class St_CameraController : MonoBehaviour
 {
-    public static CameraController Inst;
+    public static St_CameraController Inst;
 
     public Vector2 Offset;
     public float rotationLerpSpeed;

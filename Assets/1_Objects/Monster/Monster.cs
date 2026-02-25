@@ -4,6 +4,7 @@ public class Monster : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     public Animator anim;
+    public PhysicsMaterial2D pMat;
 
     public float visonRange;
     public float linearDamping;
@@ -24,6 +25,7 @@ public class Monster : MonoBehaviour
     protected virtual void Awake()
     {
         rigidBody.linearDamping = linearDamping;
+        rigidBody.sharedMaterial = pMat;
     }
 
     protected virtual void Start()
@@ -81,11 +83,14 @@ public class Monster : MonoBehaviour
     }
 
     // 몬스터 사망 시 BloodExplode 객체를 생성 후 오브젝트 풀로 반환된다.
+    // GameManager.Inst.remainedEnemy를 감소시킨다.
     protected virtual void DeleteInstance()
     {
-        var newBloodExplosion = ObjectManager.Inst.GetBloodExplode();
+        var newBloodExplosion = St_ObjectManager.Inst.GetBloodExplode();
         newBloodExplosion.transform.position = transform.position;
         newBloodExplosion.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180, 180));
-        ObjectManager.Inst.ReturnMonster(this);
+        St_GameManager.Inst.remainedEnemy--;
+        St_RemainEnemyIndicator.Inst.InputRemainedEnemy(St_GameManager.Inst.remainedEnemy);
+        St_ObjectManager.Inst.ReturnMonster(this);
     }
 }

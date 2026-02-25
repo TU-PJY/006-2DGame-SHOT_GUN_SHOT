@@ -24,7 +24,7 @@ public class BloodStain : MonoBehaviour
             opacity -= Time.deltaTime * 0.25f;
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, opacity);
             if(opacity <= 0f)
-                ObjectManager.Inst.ReturnBloodStain(this);
+                St_ObjectManager.Inst.ReturnBloodStain(this);
         }
     }
 

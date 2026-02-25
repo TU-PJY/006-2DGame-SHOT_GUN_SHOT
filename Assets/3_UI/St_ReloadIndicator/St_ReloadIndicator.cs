@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ReloadIndicator : MonoBehaviour
+public class St_ReloadIndicator : MonoBehaviour
 {
-    public static ReloadIndicator Inst;
+    public static St_ReloadIndicator Inst;
     private Vector2 originScale;
     private RectTransform rTransform;
 

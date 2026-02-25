@@ -64,13 +64,13 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         // 카메라에 달리기 여부 전달
-        CameraController.Inst.InputRunState(runFlag);
+        St_CameraController.Inst.InputRunState(runFlag);
 
         // 카메라에 회전값 전달
-        CameraController.Inst.InputPlayerRotation(rotation);
+        St_CameraController.Inst.InputPlayerRotation(rotation);
 
         // 카메라에 위치값 전달
-        CameraController.Inst.InputPlayerPos(rigidBody.position);
+        St_CameraController.Inst.InputPlayerPos(rigidBody.position);
     }
 
     void FixedUpdate()
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
     void InputMouse()
     {
         // 마우스 회전 시 바디 회전
-        rotation -= Input.mousePositionDelta.x * GameManager.Inst.mouseSensivity;
+        rotation -= Input.mousePositionDelta.x * St_GameManager.Inst.mouseSensivity;
 
         // 0 ~ 360도 사이에서만 회전하도록 클램프
         rotation = (rotation + 360f) % 360f;

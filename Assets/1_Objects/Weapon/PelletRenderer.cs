@@ -31,6 +31,6 @@ public class PelletRenderer : MonoBehaviour
 
         // 선이 완전히 투명해지면 다시 풀로 반환
         if (opacity <= 0f)
-            ObjectManager.Inst.ReturnPelletRenderer(this);
+            St_ObjectManager.Inst.ReturnPelletRenderer(this);
     }
 }

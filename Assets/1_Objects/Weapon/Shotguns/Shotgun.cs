@@ -32,7 +32,7 @@ public class Shotgun : MonoBehaviour
         reloadState = false;
         currentFireIntervalTime = 0f;
         currentReloadTime = 0f;
-        BulletCountIndicator.Inst.InputBulletCount(currentAmmo);// UI에 현재 장탄수 반영
+        St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo);// UI에 현재 장탄수 반영
     }
 
     public int GetCurrentAmmo()
@@ -51,7 +51,7 @@ public class Shotgun : MonoBehaviour
     {
         triggerState = true;
         reloadState = false; // 재장전 중이었다면 재장전 중단
-        ReloadIndicator.Inst.SetInvisible(); // UI 비활성화
+        St_ReloadIndicator.Inst.SetInvisible(); // UI 비활성화
         currentReloadTime = pelletReloadInterval;
     }
 
@@ -96,11 +96,11 @@ public class Shotgun : MonoBehaviour
         {
             currentAmmo--;
 
-            BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
-            CameraController.Inst.AddShake(recoil); // 카메라에 흔들림 추가
+            St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
+            St_CameraController.Inst.AddShake(recoil); // 카메라에 흔들림 추가
 
             // 총구 위치에 새로운 총구 화염 배치
-            var muzzleFire = ObjectManager.Inst.GetMuzzleFire(); // 총구 화염 오브젝트 생성
+            var muzzleFire = St_ObjectManager.Inst.GetMuzzleFire(); // 총구 화염 오브젝트 생성
             Matrix4x4 muzzleMatrix = new();
             T.Identity(ref muzzleMatrix);
             T.Translate(ref muzzleMatrix, playerPos);
@@ -111,7 +111,7 @@ public class Shotgun : MonoBehaviour
             muzzleFire.SetAnimSpeed(muzzleFireAnimSpeed);
 
             // 총구 위치에 새로운 펠릿(ray) 배치
-            var pellet = PelletManager.Inst;
+            var pellet = St_PelletManager.Inst;
             T.Translate(ref muzzleMatrix, new Vector2(-playerOffset.x * 1.5f, 0f));
             T.Dispatch(pellet.transform, ref muzzleMatrix);
             pellet.StartRayCast(pelletCount, pelletDisperse, pelletDistance, pelletDamage);
@@ -125,18 +125,18 @@ public class Shotgun : MonoBehaviour
         currentReloadTime -= Time.deltaTime;
 
         // 재장전 인디케이터에 총 재장전 시간과 현재 재장전 시간 입력
-        ReloadIndicator.Inst.InputReloadTime(pelletReloadInterval, currentReloadTime);
+        St_ReloadIndicator.Inst.InputReloadTime(pelletReloadInterval, currentReloadTime);
 
         // 탄약을 모두 다 장전했다면 재장전 상태를 비활성화 하고 아니라면 다음 탄약 장전을 준비
         if (currentReloadTime <= 0f)
         {
             currentAmmo++;
-            BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
+            St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
 
             if (currentAmmo == maxAmmo)
             {
                 currentReloadTime = 0f;
-                ReloadIndicator.Inst.SetInvisible();
+                St_ReloadIndicator.Inst.SetInvisible();
                 reloadState = false;
             }
             else

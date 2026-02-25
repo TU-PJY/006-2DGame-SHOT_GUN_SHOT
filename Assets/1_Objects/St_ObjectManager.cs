@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectManager : MonoBehaviour
+public class St_ObjectManager : MonoBehaviour
 {
-    public static ObjectManager Inst;
+    public static St_ObjectManager Inst;
 
     public Monster monsterPrefab;
     public MuzzleFire muzzleFirePrefab;

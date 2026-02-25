@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8059507142397642062
+--- !u!1 &8008961827012093174
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7692572722343353096}
-  - component: {fileID: 7720564769820390239}
-  m_Layer: 9
-  m_Name: PelletManager
-  m_TagString: Pellet
+  - component: {fileID: 5546830348818009857}
+  - component: {fileID: 1847398650856296222}
+  m_Layer: 0
+  m_Name: St_MonsterGenerator
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7692572722343353096
+--- !u!4 &5546830348818009857
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8059507142397642062}
+  m_GameObject: {fileID: 8008961827012093174}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.05719, y: -0.14834, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7720564769820390239
+--- !u!114 &1847398650856296222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8059507142397642062}
+  m_GameObject: {fileID: 8008961827012093174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8813842a9dcb624aabceac0c13c7bb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 06db9f93ec623f64990edb8c23c2027d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pellet
-  pelletCount: 0
-  pelletDisperse: 0
-  pelletDistance: 0
-  pelletDamage: 0
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterGenerator
+  initialMonsterCount: 0
+  generateInterval: 3
+  mapSize: {x: 25, y: 25}

@@ -2,9 +2,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using System;
 
-public class BulletCountIndicator : MonoBehaviour
+public class St_BulletCountIndicator : MonoBehaviour
 {
-    public static BulletCountIndicator Inst;
+    public static St_BulletCountIndicator Inst;
     private Text text;
     public Image img;
     private float textScale; // 피드백 애니메이션 변수
