@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - FxTemporaire
   - Pellet
+  - MapObject
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemy
   - Particle
   - Pellet
-  - 
+  - MapObject
   - 
   - 
   - 

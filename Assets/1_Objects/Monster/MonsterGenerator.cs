@@ -47,20 +47,21 @@ public class MonsterGenerator : MonoBehaviour
 
         // 맵의 가장자리 4방향 중 하나를 선택
         var spawnEdge = spawnDir[Random.Range(0, 3)];
+        var offset = 5f;
 
         switch (spawnEdge)
         {
             case SpawnDir.Left: // 맵의 왼쪽에서 스폰
-                inst.transform.position = new Vector2(-mapSize.x, Random.Range(-mapSize.y, mapSize.y));
+                inst.transform.position = new Vector2(-mapSize.x - offset, Random.Range(-mapSize.y, mapSize.y));
                 break;
             case SpawnDir.Right: // 맵의 오른쪽에서스폰
-                inst.transform.position = new Vector2(mapSize.x, Random.Range(-mapSize.y, mapSize.y));
+                inst.transform.position = new Vector2(mapSize.x + offset, Random.Range(-mapSize.y, mapSize.y));
                 break;
             case SpawnDir.Top: // 맵의 상단에서 스폰
-                inst.transform.position = new Vector2(Random.Range(-mapSize.x, mapSize.x), mapSize.y);
+                inst.transform.position = new Vector2(Random.Range(-mapSize.x, mapSize.x), mapSize.y + offset);
                 break;
             case SpawnDir.Bottom: // 맵의 하단에서 스폰
-                inst.transform.position = new Vector2(Random.Range(-mapSize.x, mapSize.x), -mapSize.y);
+                inst.transform.position = new Vector2(Random.Range(-mapSize.x, mapSize.x), -mapSize.y - offset);
                 break;
         }
     }

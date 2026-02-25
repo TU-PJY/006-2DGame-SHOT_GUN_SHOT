@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 struct RayStartEnd
@@ -81,23 +82,31 @@ public class PelletManager : MonoBehaviour
             // 장애물이나 몬스터와 충돌하면 다음 펠릿 처리
             if (hit.collider != null)
             {
-                if (hit.collider.CompareTag("Enemy"))
+                var colliderTag = hit.collider.tag;
+
+                switch(colliderTag)
                 {
-                    if (hit.collider.TryGetComponent<Monster>(out var monster))
-                    {
-                        monster.GiveDamage(damage);
+                    case "Enemy":
+                        if (hit.collider.TryGetComponent<Monster>(out var monster))
+                        {
+                            monster.GiveDamage(damage);
+                            rayStartEnd.end = hit.point;
+
+                            // 몬스터와 충돌한 곳에 피격 인디케이터 객체와 피 객체 생성
+                            var newHitInd = ObjectManager.Inst.GetHitIndicator();
+                            newHitInd.transform.position = hit.point;
+                            newHitInd.ResetState();
+
+                            var newBloodStain = ObjectManager.Inst.GetBloodStain();
+                            newBloodStain.transform.position = hit.point;
+                            newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180f, 180f));
+                            newBloodStain.ResetState();
+                        }
+                        break;
+
+                    default:
                         rayStartEnd.end = hit.point;
-
-                        // 몬스터와 충돌한 곳에 피격 인디케이터 객체와 피 객체 생성
-                        var newHitInd = ObjectManager.Inst.GetHitIndicator();
-                        newHitInd.transform.position = hit.point;
-                        newHitInd.ResetState();
-
-                        var newBloodStain = ObjectManager.Inst.GetBloodStain();
-                        newBloodStain.transform.position = hit.point;
-                        newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180f, 180f));
-                        newBloodStain.ResetState();
-                    }
+                        break;
                 }
             }
 
