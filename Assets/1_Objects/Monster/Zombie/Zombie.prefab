@@ -51,13 +51,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Zombie
   rigidBody: {fileID: 1803585708911033811}
   anim: {fileID: 92019676916218293}
-  pMat: {fileID: 6200000, guid: 03d32bb9b7d2fb4458703bbf18c14a14, type: 2}
   visonRange: 100
   linearDamping: 10
   standardAccSpeed: 16
   accSpeed: 16
   standardAttackSpeed: 8
   attackSpeed: 16
+  attackDamage: 5
 --- !u!212 &7772376037535370840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03d32bb9b7d2fb4458703bbf18c14a14, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -212,7 +212,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03d32bb9b7d2fb4458703bbf18c14a14, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

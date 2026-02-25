@@ -1,13 +1,10 @@
 using UnityEngine;
 
-using T = MatrixTransform;
-
 public class Zombie : Monster
 {
     private bool isAttack = false;
     private bool isWalk = false;
     private bool isNear = false;
-    private float rotation;
     private float rotationDest;
     private int totalDamage;
 
@@ -61,8 +58,8 @@ public class Zombie : Monster
 
     void CheckPlayerNear()
     {
-         // 플레이가 visonRange에 도달하면 추적 시작
-         isNear = Math_.CalcDistance(rigidBody.position, targetPlayer.transform.position) < visonRange;
+        // 플레이가 visonRange에 도달하면 추적 시작
+        isNear = Math_.CalcDistance(rigidBody.position, targetPlayer.transform.position) < visonRange;
     }
 
     void MoveBody()
@@ -90,6 +87,7 @@ public class Zombie : Monster
     public void OnAttack()
     {
         print("[Zombie] Attack event occured");
+        targetPlayer.GetComponent<Player>().GiveDamage(attackDamage);
     }
 
     void TrackPlayer()

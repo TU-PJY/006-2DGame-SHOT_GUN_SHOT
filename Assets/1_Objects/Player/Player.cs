@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public float linearDamping;
     public float accSpeed;
     public float runSpeedRatio;
+    public int totalHP;
+    public int currHP;
 
     public Shotgun shotgun;
 
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rigidBody.linearDamping = linearDamping;
+        currHP = totalHP;
     }
 
     void Start()
@@ -170,5 +173,13 @@ public class Player : MonoBehaviour
 
         rigidBody.AddForce(relForce.normalized * accSpeed * runAccRatio, ForceMode2D.Force);   
         rigidBody.position = Math_.Clamp(rigidBody.position, new Vector2(-25f, -25f), new Vector2(25f, 25f));  
+    }
+
+    public void GiveDamage(int val)
+    {
+        // 몬스터에게 피격 당하면 카메라에 흔들림을 추가한다
+        St_CameraController.Inst.AddShake(0.5f);
+        currHP -= val;
+        currHP = Math.Clamp(currHP, 0, 100);
     }
 }

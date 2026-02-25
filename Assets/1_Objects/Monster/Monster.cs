@@ -4,7 +4,6 @@ public class Monster : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     public Animator anim;
-    public PhysicsMaterial2D pMat;
 
     public float visonRange;
     public float linearDamping;
@@ -19,13 +18,14 @@ public class Monster : MonoBehaviour
     public float standardAttackSpeed;
     public float attackSpeed;
 
+    public int attackDamage;
+
     // 추적 대상 플레이어
     protected GameObject targetPlayer;
 
     protected virtual void Awake()
     {
         rigidBody.linearDamping = linearDamping;
-        rigidBody.sharedMaterial = pMat;
     }
 
     protected virtual void Start()

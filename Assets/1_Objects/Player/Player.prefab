@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2082860409580310183}
   m_Layer: 7
   m_Name: Torso
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,6 +259,8 @@ MonoBehaviour:
   linearDamping: 10
   accSpeed: 60
   runSpeedRatio: 1.5
+  totalHP: 0
+  currHP: 0
   shotgun: {fileID: -6038716875156518231, guid: 33d02e7e15fafca4d94ce49ad238566f, type: 3}
   runFlag: 0
 --- !u!50 &8811263906739358779
@@ -320,7 +322,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03d32bb9b7d2fb4458703bbf18c14a14, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
