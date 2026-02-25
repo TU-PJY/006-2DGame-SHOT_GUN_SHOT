@@ -100,7 +100,11 @@ public class St_PelletManager : MonoBehaviour
                             var newBloodStain = St_ObjectManager.Inst.GetBloodStain();
                             newBloodStain.transform.position = hit.point;
                             newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180f, 180f));
+
                             newBloodStain.ResetState();
+                            var monsterScale = monster.transform.localScale;
+                            var bloodStainScale = newBloodStain.transform.localScale;
+                            newBloodStain.transform.localScale = new Vector2(monsterScale.x * bloodStainScale.x, monsterScale.y * bloodStainScale.y);
                         }
                         break;
 

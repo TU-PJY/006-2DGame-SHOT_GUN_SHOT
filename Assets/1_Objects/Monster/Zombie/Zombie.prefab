@@ -54,7 +54,7 @@ MonoBehaviour:
   visonRange: 100
   linearDamping: 10
   standardAccSpeed: 16
-  accSpeed: 16
+  accSpeed: 24
   standardAttackSpeed: 8
   attackSpeed: 16
   attackDamage: 5

@@ -101,5 +101,43 @@ public class St_MonsterGenerator : MonoBehaviour
                 inst.transform.position = new Vector2(Random.Range(-mapSize.x, mapSize.x), -mapSize.y - offset);
                 break;
         }
+
+        if(St_GameManager.Inst.currentRound > 1)
+        {
+            bool specialFlag;
+
+            // 라운드가 올라갈 수록 특수 속성 몬스터의 생성 확률이 높아진다.
+            if (Range_.InRange(St_GameManager.Inst.currentRound, 2, 10))
+                specialFlag = Range_.InRange(Random.Range(1, 101), 1, 20); 
+
+            else if (Range_.InRange(St_GameManager.Inst.currentRound, 11, 19))
+                specialFlag = Range_.InRange(Random.Range(1, 101), 1, 40); 
+
+            else
+                specialFlag = Range_.InRange(Random.Range(1, 101), 1, 60);
+ 
+            if(specialFlag) {
+                // 타입 중 하나를 선택하여 특수 속성 몬스터 생성
+                // 1: 빠르고 약함
+                // 2: 느리고 강함
+                int randomType = Random.Range(1, 3);
+
+                switch(randomType) {
+                case 1: // 약하고 빠름
+                    inst.accSpeed = 64f;    
+                    inst.transform.localScale = new Vector2(0.7f, 0.7f);
+                    inst.attackDamage = 2;
+                    inst.attackSpeed = 24f;
+                    break;
+
+                case 2: // 강하고 느림
+                    inst.accSpeed = 16f;    
+                    inst.transform.localScale = new Vector2(1.8f, 1.8f);
+                    inst.attackDamage = 20;
+                    inst.attackSpeed = 8f;
+                    break;
+                }
+            }
+        }
     }
 }

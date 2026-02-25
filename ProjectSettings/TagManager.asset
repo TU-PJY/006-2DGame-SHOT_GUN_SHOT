@@ -51,6 +51,9 @@ TagManager:
   - name: GroundProp
     uniqueID: 1857067591
     locked: 0
+  - name: GroundProp2
+    uniqueID: 1218379395
+    locked: 0
   - name: PlayerLeg
     uniqueID: 748242815
     locked: 0

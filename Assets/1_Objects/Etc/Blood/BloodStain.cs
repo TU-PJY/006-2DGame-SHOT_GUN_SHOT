@@ -8,12 +8,15 @@ public class BloodStain : MonoBehaviour
     float opacity;
     float deleteDelay;
     SpriteRenderer sr;
+    
+    public Vector2 originScale;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         opacity = 1f;
         deleteDelay = 1f;
+        originScale = transform.localScale;
     }
 
     void Update()
@@ -36,5 +39,6 @@ public class BloodStain : MonoBehaviour
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
         opacity = 1f;
         deleteDelay = 1f;
+        transform.localScale = originScale;
     }
 }

@@ -89,6 +89,11 @@ public class Monster : MonoBehaviour
         var newBloodExplosion = St_ObjectManager.Inst.GetBloodExplode();
         newBloodExplosion.transform.position = transform.position;
         newBloodExplosion.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180, 180));
+        newBloodExplosion.ResetState();
+        var monsterScale = transform.localScale;
+        var bloodExplodeScale = newBloodExplosion.transform.localScale;
+        newBloodExplosion.transform.localScale = new Vector2(monsterScale.x * bloodExplodeScale.x, monsterScale.y * bloodExplodeScale.y);
+
         St_GameManager.Inst.remainedEnemy--;
         St_RemainEnemyIndicator.Inst.InputRemainedEnemy(St_GameManager.Inst.remainedEnemy);
         St_ObjectManager.Inst.ReturnMonster(this);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2836789748277018152}
   - component: {fileID: -7081762306415698981}
   - component: {fileID: -6101185379404786246}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BloodStain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1857067591
+  m_SortingLayerID: 1218379395
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 493e3d4c4724c804f8bbebe749c9ff77, type: 3}

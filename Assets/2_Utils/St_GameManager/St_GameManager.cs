@@ -31,7 +31,7 @@ public class St_GameManager : MonoBehaviour
     void Start()
     {
         currentRound = startRound;
-        destEnemyCount = startEnemyCount;
+        destEnemyCount = startEnemyCount + (currentRound - 1) * enemyIncrease;
         remainedEnemy = destEnemyCount;
 
         // 인디케이터에 정보를 먼저 전달 후 시작
