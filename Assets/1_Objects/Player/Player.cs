@@ -40,8 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         // 마우스 고정 후 숨김
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        St_MouseManager.Inst.LockCursor();
 
         // 총기 리셋 후 시작
         if (shotgun != null)
@@ -54,8 +53,11 @@ public class Player : MonoBehaviour
         InputMouse();
         InputKey();
 
-        if(!St_UpdateManager.Inst.Check()) 
+        if(!St_UpdateManager.Inst.Check()) {
+            anim.speed = 0f;
+            legAnim.speed = 0f;
             return;
+        }
 
         UpdateAcc();
         UpdateAnim();
@@ -124,7 +126,7 @@ public class Player : MonoBehaviour
             return;
 
             // 마우스 회전 시 바디 회전
-        rotation -= Input.mousePositionDelta.x * St_GameManager.Inst.mouseSensivity;
+        rotation -= Input.mousePositionDelta.x * St_MouseManager.Inst.sensivity;
 
         // 0 ~ 360도 사이에서만 회전하도록 클램프
         rotation = (rotation + 360f) % 360f;
@@ -150,6 +152,9 @@ public class Player : MonoBehaviour
         bool strafingRight = moveFlag[(int)moveDir.Right] && !moveFlag[(int)moveDir.Left];
         bool walking       = movingUp || movingDown || movingStrafe;
         bool running       = runFlag && walking;
+
+        anim.speed = 1f;   
+        legAnim.speed = 1f;
 
         anim.SetBool("IsWalking", walking);
         anim.SetBool("IsRunning", running);
