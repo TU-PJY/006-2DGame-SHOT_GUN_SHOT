@@ -57,6 +57,8 @@ public class St_MonsterGenerator : MonoBehaviour
 
     void Update()
     {
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
         TimerOperation();
     }
 
@@ -139,5 +141,11 @@ public class St_MonsterGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Release()
+    {
+        print("[MonsterGenerator] Released instance.");
+        Inst = null;
     }
 }

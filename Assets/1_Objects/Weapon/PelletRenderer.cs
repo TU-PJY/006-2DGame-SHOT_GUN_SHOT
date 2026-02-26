@@ -24,6 +24,9 @@ public class PelletRenderer : MonoBehaviour
 
     void Update()
     {
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
+            
         // 선을 점차 투명하게 한다
         opacity -= Time.deltaTime * 5f;
         line.startColor = new Color(1f, 1f, 1f, opacity * 0.25f);

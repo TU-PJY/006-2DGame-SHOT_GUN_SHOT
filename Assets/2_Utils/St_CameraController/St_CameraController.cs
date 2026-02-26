@@ -70,6 +70,9 @@ public class St_CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
+            
         UpdateShake();
 
         var targetPos = destPosition;
@@ -105,5 +108,11 @@ public class St_CameraController : MonoBehaviour
     public float GetRotation()
     {
         return camRot;
+    }
+
+    public void Release()
+    {
+        print("[CameraController] Released instance.");
+        Inst = null;
     }
 }

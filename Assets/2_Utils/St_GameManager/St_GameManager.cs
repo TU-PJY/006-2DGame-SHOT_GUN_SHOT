@@ -41,6 +41,9 @@ public class St_GameManager : MonoBehaviour
 
     void Update()
     {
+        if(!St_UpdateManager.Inst.Check())
+            return;
+
         if(remainedEnemy == 0) { // 한 라운드가 지날 때마다 목표 적 개수가 증가한다.
             currentRound++;
             destEnemyCount += enemyIncrease;
@@ -51,5 +54,11 @@ public class St_GameManager : MonoBehaviour
 
             print($"[GameManager] Next round started. | Round: {currentRound} | Dest enemy count: {destEnemyCount}");
         }
+    }
+
+    public void Release()
+    {
+        print("[GameManager] Released instance.");
+        Inst = null;
     }
 }

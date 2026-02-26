@@ -30,6 +30,9 @@ public class Zombie : Monster
 
     protected override void Update()
     {
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
+            
         anim.speed = 1f;
         CheckPlayerNear();
         MoveBody();

@@ -50,8 +50,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // 키 입력과 마우스 입력은 업데이트 일시 정지 상태에서도 계속 받도록 한다
         InputMouse();
         InputKey();
+
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
+
         UpdateAcc();
         UpdateAnim();
 
@@ -67,6 +72,9 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
+
         // 카메라에 달리기 여부 전달
         St_CameraController.Inst.InputRunState(runFlag);
 
@@ -79,6 +87,9 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!St_UpdateManager.Inst.Check()) 
+            return;
+
         UpdateBody();
     }
 
@@ -101,12 +112,6 @@ public class Player : MonoBehaviour
 
     void InputMouse()
     {
-        // 마우스 회전 시 바디 회전
-        rotation -= Input.mousePositionDelta.x * St_GameManager.Inst.mouseSensivity;
-
-        // 0 ~ 360도 사이에서만 회전하도록 클램프
-        rotation = (rotation + 360f) % 360f;
-
         // 좌 클릭 시 현재 가지고 있는 샷건 발사
         if (shotgun != null && Input.GetMouseButtonDown(0))
             shotgun.PullTrigger();
@@ -114,6 +119,15 @@ public class Player : MonoBehaviour
         // 좌 클릭 뗄 시 현재 가지고 있는 샷건 발사 중단
         else if (shotgun != null && Input.GetMouseButtonUp(0))
             shotgun.ReleaseTrigger();
+
+        if(!St_UpdateManager.Inst.Check()) // 업데이트 일시 정지 시 회전 값을 업데이트 하지 않는다.
+            return;
+
+            // 마우스 회전 시 바디 회전
+        rotation -= Input.mousePositionDelta.x * St_GameManager.Inst.mouseSensivity;
+
+        // 0 ~ 360도 사이에서만 회전하도록 클램프
+        rotation = (rotation + 360f) % 360f;
     }
 
     void UpdateAcc() // 가속도 업데이트

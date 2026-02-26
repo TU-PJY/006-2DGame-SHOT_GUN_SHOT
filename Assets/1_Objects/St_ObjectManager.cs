@@ -116,4 +116,10 @@ public class St_ObjectManager : MonoBehaviour
     {
         ReturnInstance(ref bloodExplodePool, b);
     }
+
+    public void Release()
+    {
+        print("[ObjectManager] Released instance.");
+        Inst = null;
+    }
 }

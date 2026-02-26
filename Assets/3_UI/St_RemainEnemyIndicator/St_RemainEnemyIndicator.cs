@@ -36,4 +36,10 @@ public class St_RemainEnemyIndicator : MonoBehaviour
             textScale = 1.5f;
         started = true;
     }
+
+    public void Release()
+    {
+        print("[RemainEnemyIndicator] Released instance.");
+        Inst = null;
+    }
 }

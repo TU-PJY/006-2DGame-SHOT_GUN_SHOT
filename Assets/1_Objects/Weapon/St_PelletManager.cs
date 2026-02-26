@@ -26,7 +26,6 @@ public class St_PelletManager : MonoBehaviour
     private List<RayStartEnd> rayPosList = new();
     private Vector2 rayPos;
     private float rayRot;
-    private bool rayCastingEnabled = false;
 
     void Awake()
     {
@@ -42,7 +41,7 @@ public class St_PelletManager : MonoBehaviour
     }
 
     // 레이 캐스팅을 시작하고 모든 상태를 리셋한다.
-    public void StartRayCast(int iteration_, float disperse_, float distance_, int damage_)
+    public void RayCast(int iteration_, float disperse_, float distance_, int damage_)
     {
         rayPosList.Clear();
         rayPos = (Vector2)transform.position;
@@ -51,13 +50,6 @@ public class St_PelletManager : MonoBehaviour
         disperse = disperse_;
         distance = distance_;
         damage = damage_;
-        rayCastingEnabled = true;
-    }
-
-    void Update()
-    {
-        if(!rayCastingEnabled)
-            return;
 
         // 레이 캐스팅을 1회 실행한 후 레이 캐스팅 결과를 별도의 PelletRenderer에 전달하여 렌더링 하도록 한다
         ProcessRayCast();
@@ -66,8 +58,6 @@ public class St_PelletManager : MonoBehaviour
             var newPelletRenderer = St_ObjectManager.Inst.GetPelletRenderer();
             newPelletRenderer.SetPosition(p.start, p.end);
         }
-
-        rayCastingEnabled = false;
     }
 
     private void ProcessRayCast()
@@ -116,5 +106,11 @@ public class St_PelletManager : MonoBehaviour
 
             rayPosList.Add(rayStartEnd);
         }
+    }
+
+    public void Release()
+    {
+        print("[PelletManager] Released instance.");
+        Inst = null;
     }
 }

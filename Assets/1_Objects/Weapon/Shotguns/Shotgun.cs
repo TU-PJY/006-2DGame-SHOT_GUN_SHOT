@@ -114,7 +114,7 @@ public class Shotgun : MonoBehaviour
             var pellet = St_PelletManager.Inst;
             T.Translate(ref muzzleMatrix, new Vector2(-playerOffset.x * 1.5f, 0f));
             T.Dispatch(pellet.transform, ref muzzleMatrix);
-            pellet.StartRayCast(pelletCount, pelletDisperse, pelletDistance, pelletDamage);
+            pellet.RayCast(pelletCount, pelletDisperse, pelletDistance, pelletDamage);
 
             currentFireIntervalTime += fireInterval; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }

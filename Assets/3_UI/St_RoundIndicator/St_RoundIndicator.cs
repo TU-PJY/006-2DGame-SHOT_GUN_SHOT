@@ -37,4 +37,10 @@ public class St_RoundIndicator : MonoBehaviour
             textScale = 1.5f;
         started = true;
     }
+
+    public void Release()
+    {
+        print("[RoundIndicator] Released instance.");
+        Inst = null;
+    }
 }

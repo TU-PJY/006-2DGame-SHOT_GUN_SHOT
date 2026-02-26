@@ -50,4 +50,10 @@ public class St_BulletCountIndicator : MonoBehaviour
             textScale = 1.5f;
         started = true;
     }
+
+    public void Release()
+    {
+        print("[BulletIndicator] Released instance.");
+        Inst = null;
+    }
 }

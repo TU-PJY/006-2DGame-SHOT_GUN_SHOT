@@ -43,4 +43,10 @@ public class St_ReloadIndicator : MonoBehaviour
         // 현재 재장전 누적 시간이 설정 소요 시간에 가까울수록 참
         rTransform.localScale = new Vector2((totalTime - currentTime) / totalTime * originScale.x, originScale.y);
     }
+
+    public void Release()
+    {
+        print("[ReloadIndicator] Released instance.");
+        Inst = null;
+    }
 }

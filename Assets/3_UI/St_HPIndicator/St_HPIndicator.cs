@@ -9,7 +9,7 @@ public class St_HPIndicator : MonoBehaviour
     public Image img;
 
     private Text text;
-    private float colorVal; // 피격 피드백용 색상 값
+    private float colorVal = 1f; // 피격 피드백용 색상 값
     private Color textColor = new(1f, 1f, 1f, 1f);
     private bool started = false; // 게임 시작 때 첫 값 입력 시 피드백을 재생하지 않도록 한다
 
@@ -44,5 +44,11 @@ public class St_HPIndicator : MonoBehaviour
         if(started)
             colorVal = 0f;
         started = true;
+    }
+
+    public void Release()
+    {
+        print("[HPIndicator] Released instance.");
+        Inst = null;
     }
 }
