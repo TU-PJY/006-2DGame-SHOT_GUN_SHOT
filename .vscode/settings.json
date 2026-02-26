@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "006-2DGame-Midnight_Fire.slnx"
+    "dotnet.defaultSolution": "006-2DGame-SHOT_GUN_SHOT.slnx"
 }

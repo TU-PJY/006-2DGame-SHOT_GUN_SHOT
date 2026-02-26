@@ -8,6 +8,7 @@ public class St_BulletCountIndicator : MonoBehaviour
     private Text text;
     public Image img;
     private float textScale; // 피드백 애니메이션 변수
+    private bool started = false; // 게임 시작 때 첫 값 입력 시 피드백을 재생하지 않도록 한다
 
     void Awake()
     {
@@ -45,6 +46,8 @@ public class St_BulletCountIndicator : MonoBehaviour
         img.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
 
         // 장탄수 입력이 감지되면 피드백 변수 업데이트
-        textScale = 1.5f;
+        if(started)
+            textScale = 1.5f;
+        started = true;
     }
 }

@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     {
         rigidBody.linearDamping = linearDamping;
         currHP = totalHP;
+        St_HPIndicator.Inst.InputHP(currHP);
     }
 
     void Start()
@@ -177,9 +178,10 @@ public class Player : MonoBehaviour
 
     public void GiveDamage(int val)
     {
-        // 몬스터에게 피격 당하면 카메라에 흔들림을 추가한다
-        St_CameraController.Inst.AddShake(0.5f);
+        // 몬스터에게 피격 당하면 카메라에 흔들림을 추가하고 인디케이터에 현재 체력 값을 전달한다
         currHP -= val;
         currHP = Math.Clamp(currHP, 0, 100);
+        St_CameraController.Inst.AddShake(0.5f);
+        St_HPIndicator.Inst.InputHP(currHP);
     }
 }
