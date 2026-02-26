@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     public float linearDamping;
     public float accSpeed;
     public float runSpeedRatio;
-    public int totalHP;
-    public int currHP;
+    public float totalHP;
+    public float currHP;
 
     public Shotgun shotgun;
 
@@ -195,11 +195,11 @@ public class Player : MonoBehaviour
         rigidBody.position = Math_.Clamp(rigidBody.position, new Vector2(-25f, -25f), new Vector2(25f, 25f));  
     }
 
-    public void GiveDamage(int val)
+    public void GiveDamage(float val)
     {
         // 몬스터에게 피격 당하면 카메라에 흔들림을 추가하고 인디케이터에 현재 체력 값을 전달한다
-        currHP -= val;
-        currHP = Math.Clamp(currHP, 0, 100);
+        currHP -= val * St_LevelManager.Inst.armorDiff;
+        currHP = Mathf.Clamp(currHP, 0f, 100f);
         St_CameraController.Inst.AddShake(0.5f);
         St_HPIndicator.Inst.InputHP(currHP);
     }

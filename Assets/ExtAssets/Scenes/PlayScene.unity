@@ -4336,12 +4336,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::St_UpgradeManager
   armorLevel: 0
   armorLevelLimit: 20
+  armorDiffValue: 0.95
+  armorDiff: 1
   pelletLevel: 0
   pelletLevelLimit: 10
+  pelletDiff: 1
   shootSpeedLevel: 0
   shootSpeedLevelLimit: 20
+  shootSpeedDiffValue: 0.9
+  shootSpeedDiff: 1
   reloadSpeedLevel: 0
   reloadSpeedLevelLimit: 20
+  reloadSpeedDiffValue: 0.9
+  reloadSpeedDiff: 1
 --- !u!1 &1065988651
 GameObject:
   m_ObjectHideFlags: 0

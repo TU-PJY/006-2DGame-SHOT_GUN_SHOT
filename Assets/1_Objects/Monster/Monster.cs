@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     public float standardAttackSpeed;
     public float attackSpeed;
 
-    public int attackDamage;
+    public float attackDamage;
 
     // 추적 대상 플레이어
     protected GameObject targetPlayer;
@@ -77,7 +77,7 @@ public class Monster : MonoBehaviour
         
     }
 
-    public virtual void GiveDamage(int damage)
+    public virtual void GiveDamage(float damage)
     {
 
     }

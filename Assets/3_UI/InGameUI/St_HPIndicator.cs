@@ -37,9 +37,10 @@ public class St_HPIndicator : MonoBehaviour
         img.color = text.color;
     }
 
-    public void InputHP(int val)
+    public void InputHP(float val)
     {
-        text.text = val.ToString();
+        var inputVal = (int)val;
+        text.text = inputVal.ToString();
         // 피해를 입으면 색상을 빨간색으로 변경한다
         if(started)
             colorVal = 0f;

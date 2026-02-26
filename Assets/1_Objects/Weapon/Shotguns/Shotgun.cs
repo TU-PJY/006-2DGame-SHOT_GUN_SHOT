@@ -7,7 +7,7 @@ public class Shotgun : MonoBehaviour
 {
     public int   maxAmmo; // 최대 장탄수
     public int   pelletCount; // 펠릿 개수
-    public int   pelletDamage; // 펠릿 당 대미지
+    public float pelletDamage; // 펠릿 당 대미지
     public float pelletDisperse; // 펠릿 퍼짐 수치 // 클 수록 더 넓게 퍼짐
     public float pelletDistance; // 펠릿이 대미지를 줄 수 있는 거리
     public float fireInterval; // 발사 간격
@@ -52,7 +52,7 @@ public class Shotgun : MonoBehaviour
         triggerState = true;
         reloadState = false; // 재장전 중이었다면 재장전 중단
         St_ReloadIndicator.Inst.SetInvisible(); // UI 비활성화
-        currentReloadTime = pelletReloadInterval;
+        currentReloadTime = pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff;
     }
 
     public void ReleaseTrigger()
@@ -114,9 +114,9 @@ public class Shotgun : MonoBehaviour
             var pellet = St_PelletManager.Inst;
             T.Translate(ref muzzleMatrix, new Vector2(-playerOffset.x * 1.5f, 0f));
             T.Dispatch(pellet.transform, ref muzzleMatrix);
-            pellet.RayCast(pelletCount, pelletDisperse, pelletDistance, pelletDamage);
+            pellet.RayCast(pelletCount + St_LevelManager.Inst.pelletDiff, pelletDisperse, pelletDistance, pelletDamage);
 
-            currentFireIntervalTime += fireInterval; // 발사 간격 시간 값을 더하여 다음 발사 준비
+            currentFireIntervalTime += fireInterval * St_LevelManager.Inst.shootSpeedDiff; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }
     }
 
@@ -125,7 +125,7 @@ public class Shotgun : MonoBehaviour
         currentReloadTime -= Time.deltaTime;
 
         // 재장전 인디케이터에 총 재장전 시간과 현재 재장전 시간 입력
-        St_ReloadIndicator.Inst.InputReloadTime(pelletReloadInterval, currentReloadTime);
+        St_ReloadIndicator.Inst.InputReloadTime(pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff, currentReloadTime);
 
         // 탄약을 모두 다 장전했다면 재장전 상태를 비활성화 하고 아니라면 다음 탄약 장전을 준비
         if (currentReloadTime <= 0f)
@@ -140,7 +140,7 @@ public class Shotgun : MonoBehaviour
                 reloadState = false;
             }
             else
-                currentReloadTime += pelletReloadInterval;
+                currentReloadTime += pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff;
         }
     }
 }

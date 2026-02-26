@@ -128,14 +128,14 @@ public class St_MonsterGenerator : MonoBehaviour
                 case 1: // 약하고 빠름
                     inst.accSpeed = 64f;    
                     inst.transform.localScale = new Vector2(0.7f, 0.7f);
-                    inst.attackDamage = 2;
+                    inst.attackDamage = 2f;
                     inst.attackSpeed = 24f;
                     break;
 
                 case 2: // 강하고 느림
                     inst.accSpeed = 16f;    
                     inst.transform.localScale = new Vector2(1.8f, 1.8f);
-                    inst.attackDamage = 20;
+                    inst.attackDamage = 20f;
                     inst.attackSpeed = 8f;
                     break;
                 }

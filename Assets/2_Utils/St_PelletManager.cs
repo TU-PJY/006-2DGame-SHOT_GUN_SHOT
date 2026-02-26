@@ -22,7 +22,7 @@ public class St_PelletManager : MonoBehaviour
     private int iteration; // 펠릿 개수 (ray 개수) // 오브젝트 풀에서 생성 시 개수 입력 후 활성화
     private float disperse; // 펠릿이 퍼지는 각도
     private float distance; // 펠릿이 대미지를 줄수 있는 거리
-    private int damage; // 펠릿 당 대미지
+    private float damage; // 펠릿 당 대미지
     private List<RayStartEnd> rayPosList = new();
     private Vector2 rayPos;
     private float rayRot;
@@ -41,7 +41,7 @@ public class St_PelletManager : MonoBehaviour
     }
 
     // 레이 캐스팅을 시작하고 모든 상태를 리셋한다.
-    public void RayCast(int iteration_, float disperse_, float distance_, int damage_)
+    public void RayCast(int iteration_, float disperse_, float distance_, float damage_)
     {
         rayPosList.Clear();
         rayPos = (Vector2)transform.position;

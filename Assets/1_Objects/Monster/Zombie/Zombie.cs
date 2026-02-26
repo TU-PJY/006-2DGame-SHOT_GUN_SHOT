@@ -6,14 +6,14 @@ public class Zombie : Monster
     private bool isWalk = false;
     private bool isNear = false;
     private float rotationDest;
-    private int totalDamage;
+    private float totalDamage;
 
     public override void ResetState()
     {
         isAttack = false;
         isWalk = false;
         isNear = false;
-        totalDamage = 0;
+        totalDamage = 0f;
     }
 
     protected override void Awake()
@@ -106,13 +106,13 @@ public class Zombie : Monster
 
     void CalcHitCount()
     {
-        if (totalDamage > 0)
+        if (totalDamage > 0f)
             DeleteInstance();
         
     }
 
     // 한 번에 대미지를 가하는 것이 아닌 대미지를 합산하여 나중에 처리한다.
-    public override void GiveDamage(int damage)
+    public override void GiveDamage(float damage)
     {
         totalDamage += damage;
     }
