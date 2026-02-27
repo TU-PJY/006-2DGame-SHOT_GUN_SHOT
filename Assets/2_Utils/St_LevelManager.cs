@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 // level: 현재 레벨

@@ -39,7 +39,7 @@ public class St_UpdateManager : MonoBehaviour
     }
 
     // 업데이트 상태 확인
-    public bool Check()
+    public bool IsRunning()
     {
         return UpdateState;
     }

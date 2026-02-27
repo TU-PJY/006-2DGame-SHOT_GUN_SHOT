@@ -21,7 +21,7 @@ public class BloodStain : MonoBehaviour
 
     void Update()
     {
-        if (!St_UpdateManager.Inst.Check())
+        if (!St_UpdateManager.Inst.IsRunning())
             return;
 
         // 생성 1초 후 지워지기 시작하고, 완전히 지워지면 오브젝트 풀로 반환

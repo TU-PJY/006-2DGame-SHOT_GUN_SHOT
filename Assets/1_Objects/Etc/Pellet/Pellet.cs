@@ -24,7 +24,7 @@ public class Pellet : MonoBehaviour
 
     void Update()
     {
-        if(!St_UpdateManager.Inst.Check()) 
+        if(!St_UpdateManager.Inst.IsRunning()) 
             return;
             
         // 선을 점차 투명하게 한다

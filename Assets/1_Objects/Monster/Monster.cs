@@ -19,6 +19,12 @@ public class Monster : MonoBehaviour
     public float attackSpeed;
 
     public float attackDamage;
+    //[HideInInspector]
+    public float currAttackDamage;
+
+    public float totalHP;
+    //[HideInInspector]
+    public float currHP;
 
     // 추적 대상 플레이어
     protected GameObject targetPlayer;

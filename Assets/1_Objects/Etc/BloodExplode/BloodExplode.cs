@@ -13,7 +13,7 @@ public class BloodExplode : MonoBehaviour
 
     void Update()
     {
-        if(!St_UpdateManager.Inst.Check())
+        if(!St_UpdateManager.Inst.IsRunning())
         {
             anim.speed = 0f;
             return;

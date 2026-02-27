@@ -62,7 +62,7 @@ public class St_MonsterGenerator : MonoBehaviour
 
     void Update()
     {
-        if(!St_UpdateManager.Inst.Check()) 
+        if(!St_UpdateManager.Inst.IsRunning()) 
             return;
         TimerOperation();
     }
@@ -133,18 +133,27 @@ public class St_MonsterGenerator : MonoBehaviour
                 case 1: // 약하고 빠름
                     inst.accSpeed = 64f;    
                     inst.transform.localScale = new Vector2(0.7f, 0.7f);
-                    inst.attackDamage = 2f;
+                    inst.currAttackDamage *= 0.5f;
                     inst.attackSpeed = 24f;
+                    inst.currHP *= 0.5f;
                     break;
 
                 case 2: // 강하고 느림
                     inst.accSpeed = 16f;    
                     inst.transform.localScale = new Vector2(1.8f, 1.8f);
-                    inst.attackDamage = 20f;
+                    inst.currAttackDamage *= 4f;
                     inst.attackSpeed = 8f;
+                    inst.currHP *= 2f;
                     break;
                 }
             }
+
+            // 기본 체력에 라운드 가중치를 부여하여 체력과 공격력을 강화한다
+            // 한 라운드 당 체력을 1.1배씩 강화
+            inst.currHP *= Mathf.Pow(1.1f, St_GameManager.Inst.currentRound - 1);
+
+            //  한 라운드 당 공격력을 1.1배씩 강화
+            inst.currAttackDamage *= Mathf.Pow(1.1f, St_GameManager.Inst.currentRound - 1);
         }
     }
 }

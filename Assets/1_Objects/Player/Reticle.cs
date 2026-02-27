@@ -21,6 +21,12 @@ public class Reticle : MonoBehaviour
 
     void Update()
     {
+        if(!St_UpdateManager.Inst.IsRunning())
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        
         SetPosition();
     }
 

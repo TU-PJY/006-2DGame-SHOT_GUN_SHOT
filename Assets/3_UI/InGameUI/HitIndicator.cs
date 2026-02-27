@@ -19,7 +19,7 @@ public class HitIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!St_UpdateManager.Inst.Check())
+        if(!St_UpdateManager.Inst.IsRunning())
             return;
             
         opacity -= Time.deltaTime * 2f;

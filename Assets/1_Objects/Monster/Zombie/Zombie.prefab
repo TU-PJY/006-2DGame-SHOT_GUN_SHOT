@@ -58,6 +58,9 @@ MonoBehaviour:
   standardAttackSpeed: 8
   attackSpeed: 16
   attackDamage: 5
+  currAttackDamage: 0
+  totalHP: 120
+  currHP: 0
 --- !u!212 &7772376037535370840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1021926639
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 3699765714879483155, guid: 0d4a626623b4ba54193fcdfc2fd94868, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

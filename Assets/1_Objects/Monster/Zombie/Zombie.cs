@@ -13,6 +13,8 @@ public class Zombie : Monster
         isAttack = false;
         isWalk = false;
         isNear = false;
+        currAttackDamage = attackDamage;
+        currHP = totalHP;
         totalDamage = 0f;
     }
 
@@ -20,6 +22,8 @@ public class Zombie : Monster
     {
         // 바디의 선형 댐핑 설정
         base.Awake();
+        currAttackDamage = attackDamage;
+        currHP = totalHP;
     }
 
     protected override void Start()
@@ -30,8 +34,10 @@ public class Zombie : Monster
 
     protected override void Update()
     {
-        if(!St_UpdateManager.Inst.Check()) 
+        if(!St_UpdateManager.Inst.IsRunning()) {
+            anim.speed = 0f;
             return;
+        }
             
         anim.speed = 1f;
         CheckPlayerNear();
@@ -43,6 +49,8 @@ public class Zombie : Monster
 
     protected override void FixedUpdate()
     {
+        if(!St_UpdateManager.Inst.IsRunning())
+            return;
         TrackPlayer();
     }
 
@@ -90,7 +98,7 @@ public class Zombie : Monster
     public void OnAttack()
     {
         print("[Zombie] Attack event occured");
-        targetPlayer.GetComponent<Player>().GiveDamage(attackDamage);
+        targetPlayer.GetComponent<Player>().GiveDamage(currAttackDamage);
     }
 
     void TrackPlayer()
@@ -107,8 +115,13 @@ public class Zombie : Monster
     void CalcHitCount()
     {
         if (totalDamage > 0f)
-            DeleteInstance();
-        
+        {
+            currHP -= totalDamage;
+            currHP = Mathf.Clamp(currHP, 0f, 9999f);
+            if(currHP <= 0f)
+                DeleteInstance();
+            totalDamage = 0f;
+        }
     }
 
     // 한 번에 대미지를 가하는 것이 아닌 대미지를 합산하여 나중에 처리한다.

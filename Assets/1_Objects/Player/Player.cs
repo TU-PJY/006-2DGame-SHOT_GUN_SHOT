@@ -53,11 +53,14 @@ public class Player : MonoBehaviour
         InputMouse();
         InputKey();
 
-        if(!St_UpdateManager.Inst.Check()) {
+        if(!St_UpdateManager.Inst.IsRunning()) {
             anim.speed = 0f;
             legAnim.speed = 0f;
             return;
         }
+
+        anim.speed = 1f;   
+        legAnim.speed = 1f;
 
         UpdateAcc();
         UpdateAnim();
@@ -74,7 +77,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!St_UpdateManager.Inst.Check()) 
+        if(!St_UpdateManager.Inst.IsRunning()) 
             return;
 
         // 카메라에 달리기 여부 전달
@@ -89,7 +92,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!St_UpdateManager.Inst.Check()) 
+        if(!St_UpdateManager.Inst.IsRunning()) 
             return;
 
         UpdateBody();
@@ -107,6 +110,9 @@ public class Player : MonoBehaviour
         // 앞 뒤를 둘 다 누르고 있을 경우 비활성화 한다
         runFlag = moveFlag[(int)moveDir.Up] && !moveFlag[(int)moveDir.Down] && Input.GetKey(KeyCode.LeftShift);
 
+        if(!St_UpdateManager.Inst.IsRunning())
+            return;
+
         // R키 누를 시 현재 가지고 있는 샷건 재장전 활성화
         if(shotgun != null && Input.GetKeyDown(KeyCode.R))
             shotgun.StartReload();
@@ -122,7 +128,7 @@ public class Player : MonoBehaviour
         else if (shotgun != null && Input.GetMouseButtonUp(0))
             shotgun.ReleaseTrigger();
 
-        if(!St_UpdateManager.Inst.Check()) // 업데이트 일시 정지 시 회전 값을 업데이트 하지 않는다.
+        if(!St_UpdateManager.Inst.IsRunning()) // 업데이트 일시 정지 시 회전 값을 업데이트 하지 않는다.
             return;
 
             // 마우스 회전 시 바디 회전
@@ -152,9 +158,6 @@ public class Player : MonoBehaviour
         bool strafingRight = moveFlag[(int)moveDir.Right] && !moveFlag[(int)moveDir.Left];
         bool walking       = movingUp || movingDown || movingStrafe;
         bool running       = runFlag && walking;
-
-        anim.speed = 1f;   
-        legAnim.speed = 1f;
 
         anim.SetBool("IsWalking", walking);
         anim.SetBool("IsRunning", running);
@@ -199,9 +202,12 @@ public class Player : MonoBehaviour
     {
         // 몬스터에게 피격 당하면 카메라에 흔들림을 추가하고 인디케이터에 현재 체력 값을 전달한다
         currHP -= val * St_LevelManager.Inst.armorDiff;
-        currHP = Mathf.Clamp(currHP, 0f, 100f);
+        currHP = Mathf.Clamp(currHP, 0f, 99999f);
         St_CameraController.Inst.AddShake(0.5f);
         St_HPIndicator.Inst.InputHP(currHP);
         St_DamageIndicator.Inst.Enable();
+
+        if(currHP <= 0f)
+            St_GameOverUI.Inst.Enable();
     }
 }

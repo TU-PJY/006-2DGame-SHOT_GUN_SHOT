@@ -44,7 +44,7 @@ public class St_GameManager : MonoBehaviour
 
     void Update()
     {
-        if(!St_UpdateManager.Inst.Check()) // 업그레이드 UI 활성화 상태에서는 업데이트하지 않음
+        if(!St_UpdateManager.Inst.IsRunning()) // 업그레이드 UI 활성화 상태에서는 업데이트하지 않음
             return;
 
         // 라운드가 끝나면 인게임을 일시정지 후 업그레이드 인터페이스를 활성화 한다.
