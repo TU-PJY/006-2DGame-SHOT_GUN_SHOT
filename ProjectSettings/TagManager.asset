@@ -9,6 +9,7 @@ TagManager:
   - Pellet
   - MapObject
   - NearAttackBound
+  - Item
   layers:
   - Default
   - TransparentFX

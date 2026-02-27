@@ -16,6 +16,7 @@ public class St_MonsterGenerator : MonoBehaviour
     public float initialMonsterCount;
     public float generateInterval;
     public Vector2 mapSize;
+    public float roundMultiply;
 
     private float currentTime;
     private SpawnDir[] spawnDir = new SpawnDir[4]{ SpawnDir.Left, SpawnDir.Right, SpawnDir.Top, SpawnDir.Bottom };
@@ -149,11 +150,11 @@ public class St_MonsterGenerator : MonoBehaviour
             }
 
             // 기본 체력에 라운드 가중치를 부여하여 체력과 공격력을 강화한다
-            // 한 라운드 당 체력을 1.1배씩 강화
-            inst.currHP *= Mathf.Pow(1.1f, St_GameManager.Inst.currentRound - 1);
+            // 한 라운드 당 체력을 roundMultiply배씩 강화
+            inst.currHP *= Mathf.Pow(roundMultiply, St_GameManager.Inst.currentRound - 1);
 
-            //  한 라운드 당 공격력을 1.1배씩 강화
-            inst.currAttackDamage *= Mathf.Pow(1.1f, St_GameManager.Inst.currentRound - 1);
+            //  한 라운드 당 공격력을 roundMultiply배씩 강화
+            inst.currAttackDamage *= Mathf.Pow(roundMultiply, St_GameManager.Inst.currentRound - 1);
         }
     }
 }

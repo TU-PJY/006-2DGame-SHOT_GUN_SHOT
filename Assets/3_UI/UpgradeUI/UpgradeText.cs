@@ -1,3 +1,4 @@
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,7 +63,9 @@ public class UpgradeText : UpgradeItem
                 maxLevel = St_LevelManager.Inst.reloadSpeedLevelLimit;
                 break;
         }
-
-        text.text = textContent + $"\n\n레벨 {currLevel}/{maxLevel}";
+        
+        StringBuilder sb = new(textContent);
+        sb.Append($"\n\n레벨 {currLevel}/{maxLevel}");
+        text.text = sb.ToString();
     }
 }

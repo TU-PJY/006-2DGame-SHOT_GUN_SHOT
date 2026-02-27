@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 using T = MatrixTransform;
 
 public class Shotgun : MonoBehaviour
@@ -14,12 +14,14 @@ public class Shotgun : MonoBehaviour
     public float pelletReloadInterval; // 펠릿 당 장전 시간
     public float recoil; // 반동 // 클 수록 카메라가 더 많이 흔들림
     public float muzzleFireAnimSpeed; // 충구 화염 애니메이션 속도
+    public int startTotalAmmoCount; // 시작 탄약 개수
 
     private bool triggerState; // 방아쇠당긴 상태
     private bool reloadState; // 재장전 상태 // Fire 실행 시 reloadState 취소
     private float currentFireIntervalTime; // 현재 발사 간격 측정 누적 시간
     private float currentReloadTime ; // 현재 재장전 간격 측정 누적 시간
     private int currentAmmo; // 현재 장탄 수
+    private int currentTotalAmmo; // 현재 소지 탄약 개수
 
     private Vector2 playerPos;
     private float playerRotation;
@@ -32,12 +34,9 @@ public class Shotgun : MonoBehaviour
         reloadState = false;
         currentFireIntervalTime = 0f;
         currentReloadTime = 0f;
-        St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo);// UI에 현재 장탄수 반영
-    }
-
-    public int GetCurrentAmmo()
-    {
-        return currentAmmo;
+        currentTotalAmmo = startTotalAmmoCount;
+        St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
+        St_BulletCountIndicator.Inst.InputTotalAmmoCount(currentTotalAmmo);
     }
 
     public void InputPositionAndRotation(Vector2 position, float degrees, Vector2 offset)
@@ -50,9 +49,7 @@ public class Shotgun : MonoBehaviour
     public void PullTrigger()
     {
         triggerState = true;
-        reloadState = false; // 재장전 중이었다면 재장전 중단
-        St_ReloadIndicator.Inst.SetInvisible(); // UI 비활성화
-        currentReloadTime = pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff;
+        StopReload(); // 재장전 중이었다면 재장전 중단
     }
 
     public void ReleaseTrigger()
@@ -62,11 +59,19 @@ public class Shotgun : MonoBehaviour
 
     public void StartReload()
     {
-        if (currentAmmo < maxAmmo)
+        // 가지고 있는 탄약이 있어야 재장전 가능하다
+        if (currentAmmo < maxAmmo && currentTotalAmmo > 0)
         {
             reloadState = true;
             triggerState = false; // 발사 중이었다면 발사 중단
         }
+    }
+
+    public void StopReload()
+    {
+        reloadState = false;
+        St_ReloadIndicator.Inst.SetInvisible(); // UI 비활성화
+        currentReloadTime = pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff;
     }
 
     public void UpdateShotgun()
@@ -131,13 +136,14 @@ public class Shotgun : MonoBehaviour
         if (currentReloadTime <= 0f)
         {
             currentAmmo++;
+            currentTotalAmmo--;
             St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
-
-            if (currentAmmo == maxAmmo)
+            St_BulletCountIndicator.Inst.InputTotalAmmoCount(currentTotalAmmo);
+            
+            // 최대 장탄수까지 장전하거나 소지 탄약을 모두 사용하면 재장전 중단
+            if (currentAmmo == maxAmmo || currentTotalAmmo == 0)
             {
-                currentReloadTime = 0f;
-                St_ReloadIndicator.Inst.SetInvisible();
-                reloadState = false;
+               StopReload();
             }
             else
                 currentReloadTime += pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff;

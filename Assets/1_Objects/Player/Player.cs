@@ -129,7 +129,8 @@ public class Player : MonoBehaviour
             return;
 
         // R키 누를 시 현재 가지고 있는 샷건 재장전 활성화
-        if(shotgun != null && Input.GetKeyDown(KeyCode.R))
+        // 근접 공격 도중에는 재장전 불가능
+        if(!nearAttackState && shotgun != null && Input.GetKeyDown(KeyCode.R))
             shotgun.StartReload();
     }
 
@@ -138,10 +139,12 @@ public class Player : MonoBehaviour
         // 근접 공격 도중에는 총을 발사할 수 없다.
         if (!nearAttackState) {
             // 우 클릭 시 총으로 때리는 근접 공격을 한다
+            // 재장전 도중에는 재장전을 중단한다
             if(!nearAttackState && nearAttackAvailable && Input.GetMouseButton(1)) {
                 nearAttackState = true;
                 nearAttackAvailable = false;
                 nearAttackDelay = 1f;
+                shotgun.StopReload();
             }
 
             // 좌 클릭 시 현재 가지고 있는 샷건 발사

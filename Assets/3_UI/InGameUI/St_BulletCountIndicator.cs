@@ -6,8 +6,10 @@ using System.Xml.Serialization;
 public class St_BulletCountIndicator : MonoBehaviour
 {
     public static St_BulletCountIndicator Inst;
-    private Text text;
+    public Text currentAmmoText;
+    public Text totalAmmoText;
     public Image img;
+
     private float textScale; // 피드백 애니메이션 변수
     private bool started = false; // 게임 시작 때 첫 값 입력 시 피드백을 재생하지 않도록 한다
 
@@ -20,9 +22,10 @@ public class St_BulletCountIndicator : MonoBehaviour
         }
 
         Inst = this;
-        text = GetComponent<Text>();
-        text.text = "0";
+
         textScale = 1f;
+        currentAmmoText.text = "0";
+        totalAmmoText.text = "0";
 
         print("[BulletIndicator] Created instance.");
     }
@@ -47,13 +50,20 @@ public class St_BulletCountIndicator : MonoBehaviour
         // 탄약 개수가 0일 경우 R을 표시하고 텍스트 색상을 빨강으로 변경한다.
         // 그렇지 않으면 다시 숫자를 표시하고 텍스트 색상을 흰색으로 변경한다.
         bool isZero = val == 0;
-        text.text = isZero ? "R" : val.ToString();
-        text.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
+        currentAmmoText.text = isZero ? "R" : val.ToString();
+        currentAmmoText.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
         img.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
 
         // 장탄수 입력이 감지되면 피드백 변수 업데이트
         if(started)
             textScale = 1.5f;
         started = true;
+    }
+    
+    public void InputTotalAmmoCount(int val)
+    {
+        bool isZero = val == 0;
+        totalAmmoText.text = isZero ? "X" : val.ToString();
+        currentAmmoText.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
     }
 }

@@ -53,3 +53,4 @@ MonoBehaviour:
   pelletReloadInterval: 0.5
   recoil: 0.5
   muzzleFireAnimSpeed: 1
+  startTotalAmmoCount: 30
