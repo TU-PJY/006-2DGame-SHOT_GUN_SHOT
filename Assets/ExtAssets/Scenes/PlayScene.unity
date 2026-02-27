@@ -3723,6 +3723,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NearAttackBound
   bound: {fileID: 824479289}
+  playerT: {fileID: 16006613292253157}
+  knockbackForce: 20
 --- !u!70 &824479289
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10443,7 +10445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655f13b94506fb64190bd81752c64892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  startRound: 1
+  startRound: 2
   startEnemyCount: 5
   enemyIncrease: 5
   currentRound: 0
