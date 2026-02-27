@@ -16,6 +16,11 @@ public class St_InGameUI : MonoBehaviour
         print("[InGameUI] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     public void Enable()
     {
         gameObject.SetActive(true);
@@ -24,16 +29,5 @@ public class St_InGameUI : MonoBehaviour
     public void Disable()
     {
         gameObject.SetActive(false);
-    }
-
-    public void Release()
-    {
-        St_BulletCountIndicator.Inst.Release();
-        St_HPIndicator.Inst.Release();
-        St_ReloadIndicator.Inst.Release();
-        St_RemainEnemyIndicator.Inst.Release();
-        St_RoundIndicator.Inst.Release();
-        Inst = null;
-        print("[InGameUi] Released instance.");
     }
 }

@@ -3,10 +3,23 @@ using UnityEngine;
 public class BloodExplode : MonoBehaviour
 {
     private Vector2 originScale;
+    private Animator anim;
 
     void Awake()
     {
         originScale = transform.localScale;
+        anim = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        if(!St_UpdateManager.Inst.Check())
+        {
+            anim.speed = 0f;
+            return;
+        }
+
+        anim.speed = 1f;
     }
 
     public void ResetState()

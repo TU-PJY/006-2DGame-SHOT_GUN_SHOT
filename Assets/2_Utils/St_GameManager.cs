@@ -26,6 +26,10 @@ public class St_GameManager : MonoBehaviour
         Inst = this;
         print("[GameManager] Created new instance.");
     }
+    void OnDestroy()
+    {
+        Inst = null;
+    }
 
     void Start()
     {
@@ -43,19 +47,26 @@ public class St_GameManager : MonoBehaviour
         if(!St_UpdateManager.Inst.Check()) // 업그레이드 UI 활성화 상태에서는 업데이트하지 않음
             return;
 
-        if(remainedEnemy == 0) { // 한 라운드가 지날 때마다 목표 적 개수가 증가한다.
-            St_UpgradeUI.Inst.Enable(); // 업그레이드 인터페이스 활성화
-            St_InGameUI.Inst.Disable(); // 인게임 인터페이스 비활성화
-            St_UpdateManager.Inst.Pause(); // 업데이트 일시 중지
-            St_MouseManager.Inst.UnlockCursor(); // 커서 잠금 비활성화
+        // 라운드가 끝나면 인게임을 일시정지 후 업그레이드 인터페이스를 활성화 한다.
+        // 만약 모든 항목의 레벨이 최고 레벨이라면 더 이상 업그레이드 인터페이스를 활성화하지 않는다.
+        if(remainedEnemy == 0) {
+            if (!St_LevelManager.Inst.isAllLevelMax)
+            {
+                St_UpgradeUI.Inst.Enable(); // 업그레이드 인터페이스 활성화
+                St_InGameUI.Inst.Disable(); // 인게임 인터페이스 비활성화
+                St_UpdateManager.Inst.Pause(); // 업데이트 일시 중지
+                St_MouseManager.Inst.UnlockCursor(); // 커서 잠금 비활성화
+            }
+            else
+                NextRound(); // 모든 항목이 최고 레벨일 경우 라운드만 증가한다.
         }
+        
     }
 
+    // 업그레이드 인터페이스에서 호출하여 업그레이드 인터페이스를 비활성화하고, 다음 라운드로 넘어간다.
     public void SetNextRound()
     {
-        currentRound++;
-        destEnemyCount += enemyIncrease;
-        remainedEnemy = destEnemyCount;
+        NextRound();
 
         St_MonsterGenerator.Inst.SetNextRound(); // 제너레이터에게 다음 라운드로 넘어갔음을 알린다
         St_RoundIndicator.Inst.InputRound(currentRound); // 라운드 인디케이터에 변경된 라운드 전달
@@ -65,13 +76,13 @@ public class St_GameManager : MonoBehaviour
         St_InGameUI.Inst.Enable(); // 인게임 인터페이스 활성화
         St_UpdateManager.Inst.Resume(); // 업데이트 재개
         St_MouseManager.Inst.LockCursor(); // 커서 잠금 활성화
-
-        print($"[GameManager] Next round started. | Round: {currentRound} | Dest enemy count: {destEnemyCount}");
     }
 
-    public void Release()
+    void NextRound()
     {
-        print("[GameManager] Released instance.");
-        Inst = null;
+        currentRound++;
+        destEnemyCount += enemyIncrease;
+        remainedEnemy = destEnemyCount;
+        print($"[GameManager] Next round started. | Round: {currentRound} | Dest enemy count: {destEnemyCount}");
     }
 }

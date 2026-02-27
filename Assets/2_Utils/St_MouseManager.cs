@@ -18,9 +18,8 @@ public class St_MouseManager : MonoBehaviour
         print("[MouseManager] Created instance.");
     }
 
-    public void Release()
+    void OnDestroy()
     {
-        print("[MouseManager] Released instance.");
         Inst = null;
     }
 

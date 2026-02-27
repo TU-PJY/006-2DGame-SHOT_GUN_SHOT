@@ -40,6 +40,11 @@ public class St_PelletManager : MonoBehaviour
         print("[PelletManager] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     // 레이 캐스팅을 시작하고 모든 상태를 리셋한다.
     public void RayCast(int iteration_, float disperse_, float distance_, float damage_)
     {
@@ -106,11 +111,5 @@ public class St_PelletManager : MonoBehaviour
 
             rayPosList.Add(rayStartEnd);
         }
-    }
-
-    public void Release()
-    {
-        print("[PelletManager] Released instance.");
-        Inst = null;
     }
 }

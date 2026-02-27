@@ -19,6 +19,11 @@ public class St_UpdateManager : MonoBehaviour
         print("[UpdateManager] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     // 업데이트 일시정지
     public void Pause()
     {
@@ -37,11 +42,5 @@ public class St_UpdateManager : MonoBehaviour
     public bool Check()
     {
         return UpdateState;
-    }
-
-    public void Release()
-    {
-        print("[UpdateManager] Released instance.");
-        Inst = null;
     }
 }

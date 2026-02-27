@@ -28,6 +28,11 @@ public class St_ReloadIndicator : MonoBehaviour
         print("[ReloadIndicator] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     // 재장전 시각화가 보이지 않도록 설정
     public void SetInvisible()
     {
@@ -42,11 +47,5 @@ public class St_ReloadIndicator : MonoBehaviour
 
         // 현재 재장전 누적 시간이 설정 소요 시간에 가까울수록 참
         rTransform.localScale = new Vector2((totalTime - currentTime) / totalTime * originScale.x, originScale.y);
-    }
-
-    public void Release()
-    {
-        print("[ReloadIndicator] Released instance.");
-        Inst = null;
     }
 }

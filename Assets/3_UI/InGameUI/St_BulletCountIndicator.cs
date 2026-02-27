@@ -27,6 +27,11 @@ public class St_BulletCountIndicator : MonoBehaviour
         print("[BulletIndicator] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     void Update()
     {
         // 실시간 피드백 애니메이션 재생
@@ -50,11 +55,5 @@ public class St_BulletCountIndicator : MonoBehaviour
         if(started)
             textScale = 1.5f;
         started = true;
-    }
-
-    public void Release()
-    {
-        print("[BulletIndicator] Released instance.");
-        Inst = null;
     }
 }

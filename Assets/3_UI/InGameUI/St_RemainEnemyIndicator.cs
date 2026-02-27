@@ -21,6 +21,11 @@ public class St_RemainEnemyIndicator : MonoBehaviour
         print("[RemainEnemyIndicator] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     void Update()
     {
         // 값에 변화가 발생하면 피드백 재생
@@ -35,11 +40,5 @@ public class St_RemainEnemyIndicator : MonoBehaviour
         if(started)
             textScale = 1.5f;
         started = true;
-    }
-
-    public void Release()
-    {
-        print("[RemainEnemyIndicator] Released instance.");
-        Inst = null;
     }
 }

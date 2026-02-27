@@ -38,6 +38,11 @@ public class St_CameraController : MonoBehaviour
         cam = Camera.main;
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     void Start()
     {
         // 시작 시 카메라가 초기 상태와 완전히 일치하도록 설정
@@ -105,11 +110,5 @@ public class St_CameraController : MonoBehaviour
     public float GetRotation()
     {
         return camRot;
-    }
-
-    public void Release()
-    {
-        print("[CameraController] Released instance.");
-        Inst = null;
     }
 }

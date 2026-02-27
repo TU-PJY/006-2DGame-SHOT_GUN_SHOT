@@ -30,6 +30,10 @@ public class St_ObjectManager : MonoBehaviour
         Inst = this;
         print("[ObjectManager] Created instance.");
     }
+    void OnDestroy()
+    {
+        Inst = null;
+    }
 
     public T GetInstance<T> (ref List<T> pool, T preFab) where T : MonoBehaviour
     {
@@ -115,11 +119,5 @@ public class St_ObjectManager : MonoBehaviour
     public void ReturnBloodExplode(BloodExplode b)
     {
         ReturnInstance(ref bloodExplodePool, b);
-    }
-
-    public void Release()
-    {
-        print("[ObjectManager] Released instance.");
-        Inst = null;
     }
 }

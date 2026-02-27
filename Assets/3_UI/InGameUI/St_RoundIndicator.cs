@@ -22,6 +22,11 @@ public class St_RoundIndicator : MonoBehaviour
         print("[RoundIndicator] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     void Update()
     {
         // 값에 변화가 발생하면 피드백 재생
@@ -36,11 +41,5 @@ public class St_RoundIndicator : MonoBehaviour
         if(started)
             textScale = 1.5f;
         started = true;
-    }
-
-    public void Release()
-    {
-        print("[RoundIndicator] Released instance.");
-        Inst = null;
     }
 }

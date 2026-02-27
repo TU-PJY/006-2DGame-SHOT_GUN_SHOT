@@ -32,6 +32,9 @@ public class St_LevelManager : MonoBehaviour
      [HideInInspector]
     public float reloadSpeedDiff = 1f;
 
+    [HideInInspector] // 모든 항목이 최고 레벨일 경우 true
+    public bool isAllLevelMax = false;
+
     void Awake()
     {
         if(Inst && Inst != this)
@@ -44,9 +47,8 @@ public class St_LevelManager : MonoBehaviour
         print("[LevelManager] Created instance.");
     }
 
-    public void Release()
+    void OnDestroy()
     {
-        print("[LevelManager] Released instance.");
         Inst = null;
     }
 
@@ -56,6 +58,7 @@ public class St_LevelManager : MonoBehaviour
         {
             armorLevel++;
             armorDiff *= armorDiffValue;
+            CheckAllLevelMax();
         }
     }
 
@@ -65,6 +68,7 @@ public class St_LevelManager : MonoBehaviour
         {
             pelletLevel++;
             pelletDiff += 1;
+            CheckAllLevelMax();
         }
     }
 
@@ -74,6 +78,7 @@ public class St_LevelManager : MonoBehaviour
         {
             shootSpeedLevel++;
             shootSpeedDiff *= shootSpeedDiffValue;
+            CheckAllLevelMax();
         }
     }
 
@@ -82,6 +87,16 @@ public class St_LevelManager : MonoBehaviour
         if (reloadSpeedLevel < reloadSpeedLevelLimit) {
             reloadSpeedLevel++;
             reloadSpeedDiff *= reloadSpeedDiffValue;
+            CheckAllLevelMax();
         }
+    }
+
+    void CheckAllLevelMax()
+    {
+        bool isArmorMax = armorLevel == armorLevelLimit;
+        bool isPelletMax = pelletLevel == pelletLevelLimit;
+        bool isShootSpeedMax = shootSpeedLevel == shootSpeedLevelLimit;
+        bool isReloadSpeedMax = reloadSpeedLevel == reloadSpeedLevelLimit;
+        isAllLevelMax = isArmorMax && isPelletMax && isShootSpeedMax && isReloadSpeedMax;
     }
 }

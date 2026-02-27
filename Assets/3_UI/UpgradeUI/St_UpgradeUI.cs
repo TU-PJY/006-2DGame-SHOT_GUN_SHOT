@@ -24,6 +24,11 @@ public class St_UpgradeUI : MonoBehaviour
             gameObject.SetActive(false);
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     public void Enable()
     {
         gameObject.SetActive(true);
@@ -34,11 +39,5 @@ public class St_UpgradeUI : MonoBehaviour
     public void Disable()
     {
         gameObject.SetActive(false);
-    }
-
-    public void Release()
-    {
-        print("[UpgradeUI] Released instance.");
-        Inst = null;
     }
 }

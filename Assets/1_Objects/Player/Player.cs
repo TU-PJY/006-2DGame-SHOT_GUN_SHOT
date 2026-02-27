@@ -202,5 +202,6 @@ public class Player : MonoBehaviour
         currHP = Mathf.Clamp(currHP, 0f, 100f);
         St_CameraController.Inst.AddShake(0.5f);
         St_HPIndicator.Inst.InputHP(currHP);
+        St_DamageIndicator.Inst.Enable();
     }
 }

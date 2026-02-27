@@ -39,6 +39,11 @@ public class St_MonsterGenerator : MonoBehaviour
             GenerateOperation();
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     public void DisableGeneration()
     {
         gameObject.SetActive(false);
@@ -141,11 +146,5 @@ public class St_MonsterGenerator : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void Release()
-    {
-        print("[MonsterGenerator] Released instance.");
-        Inst = null;
     }
 }
