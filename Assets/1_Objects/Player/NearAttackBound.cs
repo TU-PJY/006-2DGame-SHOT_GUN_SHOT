@@ -4,6 +4,8 @@ using UnityEngine;
 public class NearAttackBound : MonoBehaviour
 {
     public CapsuleCollider2D bound;
+    public Transform playerT;
+    public float knockbackForce; // 넉백 포스
 
     private List<Collider2D> collideList = new();
     private ContactFilter2D filter;
@@ -29,13 +31,18 @@ public class NearAttackBound : MonoBehaviour
         foreach(var c in collideList)
         {
             var monster = c.GetComponent<Monster>();
-
             monster.GiveDamage(damage);
+
+            var rad = Math_.CalcRadians(playerT.position, monster.transform.position);
+            monster.GiveKnockback(knockbackForce, new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)));
+
+            var newHitInd = St_ObjectManager.Inst.GetHitIndicator();
+            newHitInd.transform.position = monster.transform.position;
+            newHitInd.ResetState();
 
             var newBloodStain = St_ObjectManager.Inst.GetBloodStain();
             newBloodStain.transform.position = monster.transform.position;
             newBloodStain.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-180f, 180f));
-
             newBloodStain.ResetState();
             var monsterScale = monster.transform.localScale;
             var bloodStainScale = newBloodStain.transform.localScale;

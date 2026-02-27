@@ -61,6 +61,7 @@ MonoBehaviour:
   currAttackDamage: 0
   totalHP: 120
   currHP: 0
+  defaultWeight: 1
 --- !u!212 &7772376037535370840
 SpriteRenderer:
   m_ObjectHideFlags: 0

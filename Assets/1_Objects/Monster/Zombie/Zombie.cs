@@ -15,6 +15,7 @@ public class Zombie : Monster
         isNear = false;
         currAttackDamage = attackDamage;
         currHP = totalHP;
+        weight = defaultWeight;
         totalDamage = 0f;
     }
 
@@ -128,5 +129,12 @@ public class Zombie : Monster
     public override void GiveDamage(float damage)
     {
         totalDamage += damage;
+    }
+
+    // 총알에 맞으면 뒤로 밀린다
+    // 무게가 무거우면 덜 밀린다
+    public override void GiveKnockback(float force, Vector2 direction)
+    {
+        rigidBody.AddForce(force * direction / weight, ForceMode2D.Impulse);
     }
 }

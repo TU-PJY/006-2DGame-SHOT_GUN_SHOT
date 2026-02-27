@@ -15,6 +15,7 @@ public class Shotgun : MonoBehaviour
     public float recoil; // 반동 // 클 수록 카메라가 더 많이 흔들림
     public float muzzleFireAnimSpeed; // 충구 화염 애니메이션 속도
     public int startTotalAmmoCount; // 시작 탄약 개수
+    public float knockbackForce; // 넉백 포스
 
     private bool triggerState; // 방아쇠당긴 상태
     private bool reloadState; // 재장전 상태 // Fire 실행 시 reloadState 취소
@@ -127,7 +128,7 @@ public class Shotgun : MonoBehaviour
             var pellet = St_PelletManager.Inst;
             T.Translate(ref muzzleMatrix, new Vector2(-playerOffset.x * 1.5f, 0f));
             T.Dispatch(pellet.transform, ref muzzleMatrix);
-            pellet.RayCast(pelletCount + St_LevelManager.Inst.pelletDiff, pelletDisperse, pelletDistance, pelletDamage);
+            pellet.RayCast(pelletCount + St_LevelManager.Inst.pelletDiff, pelletDisperse, pelletDistance, pelletDamage, knockbackForce);
 
             currentFireIntervalTime += fireInterval * St_LevelManager.Inst.shootSpeedDiff; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }

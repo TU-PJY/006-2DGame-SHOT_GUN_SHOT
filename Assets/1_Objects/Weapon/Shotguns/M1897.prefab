@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::M1897
   maxAmmo: 7
   pelletCount: 8
-  pelletDamage: 15
+  pelletDamage: 10
   pelletDisperse: 40
   pelletDistance: 10
   fireInterval: 1
@@ -54,3 +54,4 @@ MonoBehaviour:
   recoil: 0.5
   muzzleFireAnimSpeed: 1
   startTotalAmmoCount: 30
+  knockbackForce: 5

@@ -132,11 +132,12 @@ public class St_MonsterGenerator : MonoBehaviour
 
                 switch(randomType) {
                 case 1: // 약하고 빠름
-                    inst.accSpeed = 64f;    
+                    inst.accSpeed = Range_.Propability(25) ? 64 : 92; // 25퍼센트 확률로 더 빠른 속도 부여
                     inst.transform.localScale = new Vector2(0.7f, 0.7f);
                     inst.currAttackDamage *= 0.5f;
                     inst.attackSpeed = 24f;
-                    inst.currHP *= 0.5f;
+                    inst.currHP *= 0.6f;
+                    inst.weight *= 0.5f;
                     break;
 
                 case 2: // 강하고 느림
@@ -145,6 +146,7 @@ public class St_MonsterGenerator : MonoBehaviour
                     inst.currAttackDamage *= 4f;
                     inst.attackSpeed = 8f;
                     inst.currHP *= 2f;
+                    inst.weight *= 3f;
                     break;
                 }
             }

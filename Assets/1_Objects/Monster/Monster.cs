@@ -19,12 +19,16 @@ public class Monster : MonoBehaviour
     public float attackSpeed;
 
     public float attackDamage;
-    //[HideInInspector]
+    [HideInInspector]
     public float currAttackDamage;
 
     public float totalHP;
-    //[HideInInspector]
+    [HideInInspector]
     public float currHP;
+
+    public float defaultWeight;
+    [HideInInspector]
+    public float weight;
 
     // 추적 대상 플레이어
     protected GameObject targetPlayer;
@@ -32,6 +36,7 @@ public class Monster : MonoBehaviour
     protected virtual void Awake()
     {
         rigidBody.linearDamping = linearDamping;
+        weight = defaultWeight;
     }
 
     protected virtual void Start()
@@ -86,6 +91,11 @@ public class Monster : MonoBehaviour
     public virtual void GiveDamage(float damage)
     {
 
+    }
+
+    public virtual void GiveKnockback(float force, Vector2 direction)
+    {
+        
     }
 
     // 몬스터 사망 시 BloodExplode 객체를 생성 후 오브젝트 풀로 반환된다.

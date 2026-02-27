@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 struct RayStartEnd
@@ -46,7 +47,7 @@ public class St_PelletManager : MonoBehaviour
     }
 
     // 레이 캐스팅을 시작하고 모든 상태를 리셋한다.
-    public void RayCast(int iteration_, float disperse_, float distance_, float damage_)
+    public void RayCast(int iteration_, float disperse_, float distance_, float damage_, float knockBackForce)
     {
         rayPosList.Clear();
         rayPos = (Vector2)transform.position;
@@ -57,7 +58,7 @@ public class St_PelletManager : MonoBehaviour
         damage = damage_;
 
         // 레이 캐스팅을 1회 실행한 후 레이 캐스팅 결과를 별도의 PelletRenderer에 전달하여 렌더링 하도록 한다
-        ProcessRayCast();
+        ProcessRayCast(knockBackForce);
         foreach(var p in rayPosList)
         {
             var newPelletRenderer = St_ObjectManager.Inst.GetPelletRenderer();
@@ -65,7 +66,7 @@ public class St_PelletManager : MonoBehaviour
         }
     }
 
-    private void ProcessRayCast()
+    private void ProcessRayCast(float force)
     {
         for (int i = 0; i < iteration; i++)
         {
@@ -85,6 +86,12 @@ public class St_PelletManager : MonoBehaviour
                         if (hit.collider.TryGetComponent<Monster>(out var monster))
                         {
                             monster.GiveDamage(damage);
+
+                            // 충돌한 몬스터에 넉백 가함
+                            Vector2 rayNormal = hit.normal;
+                            Vector2 rayDirNormalized = rayNormal.normalized;
+                            monster.GiveKnockback(force, -rayDirNormalized);
+
                             rayStartEnd.end = hit.point;
 
                             // 몬스터와 충돌한 곳에 피격 인디케이터 객체와 피 객체 생성
