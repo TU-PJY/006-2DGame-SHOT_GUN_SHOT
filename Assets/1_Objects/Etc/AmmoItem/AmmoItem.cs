@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class AmmoItem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ReturnInstance()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        St_ObjectManager.Inst.ReturnAmmoItem(this);
     }
 }

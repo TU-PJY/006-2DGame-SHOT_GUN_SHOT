@@ -2763,47 +2763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HierarchyIcons.Folder
   haveZeroPos: 0
---- !u!1 &611333989 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6515254532388928203, guid: d0c974baf40fb8e4d96a0e3b1bd11aa2, type: 3}
-  m_PrefabInstance: {fileID: 1413387908}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &611333993
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611333989}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2.5599997
 --- !u!1 &611983949
 GameObject:
   m_ObjectHideFlags: 0
@@ -5662,10 +5621,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2544905395552466790, guid: d0c974baf40fb8e4d96a0e3b1bd11aa2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.51
-      objectReference: {fileID: 0}
     - target: {fileID: 4781244470659193445, guid: d0c974baf40fb8e4d96a0e3b1bd11aa2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.150691
@@ -5713,10 +5668,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6515254532388928203, guid: d0c974baf40fb8e4d96a0e3b1bd11aa2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 611333993}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c974baf40fb8e4d96a0e3b1bd11aa2, type: 3}
 --- !u!1 &1445032716
 GameObject:
@@ -9778,6 +9730,7 @@ MonoBehaviour:
   hitIndPrefab: {fileID: 7772443292743248460, guid: 48a9783c84fcebb4087abdc32de5006e, type: 3}
   bloodStainIndPrefab: {fileID: -6101185379404786246, guid: e47be08e8d7245745aa8ece3e083ea8a, type: 3}
   bloodExplodePrefab: {fileID: 4671899626090247933, guid: 28cace5b436c6c74daad1f6ed9950123, type: 3}
+  ammoItemPrefab: {fileID: 0}
 --- !u!1 &4347092344776602391
 GameObject:
   m_ObjectHideFlags: 0

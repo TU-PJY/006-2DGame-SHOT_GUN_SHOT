@@ -54,10 +54,9 @@ public class St_BulletCountIndicator : MonoBehaviour
         currentAmmoText.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
         img.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
 
-        // 장탄수 입력이 감지되면 피드백 변수 업데이트
+        // 입력이 감지되면 피드백 변수 업데이트
         if(started)
             textScale = 1.5f;
-        started = true;
     }
     
     public void InputTotalAmmoCount(int val)
@@ -65,5 +64,14 @@ public class St_BulletCountIndicator : MonoBehaviour
         bool isZero = val == 0;
         totalAmmoText.text = isZero ? "X" : val.ToString();
         currentAmmoText.color = isZero ? new Color(1f, 0f, 0f, 1f) : new Color(1f, 1f, 1f, 1f);
+
+        // 입력이 감지되면 피드백 변수 업데이트
+         if(started)
+            textScale = 1.5f;
+    }
+
+    public void SetStart()
+    {
+        started = true;
     }
 }

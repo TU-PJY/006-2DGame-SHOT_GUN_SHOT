@@ -212,6 +212,18 @@ public class Player : MonoBehaviour
         rigidBody.position = Math_.Clamp(rigidBody.position, new Vector2(-25f, -25f), new Vector2(25f, 25f));  
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // 주워진 아이템은 사라진다.
+        
+        // 탄약 아이템을 주우면 최대 장탄수 1세트를 얻는다.
+        if(other.CompareTag("Item"))
+        {
+            shotgun.AddTotalAmmoCount();
+            other.GetComponent<AmmoItem>().ReturnInstance();
+        }
+    }
+
     public void GiveDamage(float val)
     {
         // 몬스터에게 피격 당하면 카메라에 흔들림을 추가하고 인디케이터에 현재 체력 값을 전달한다

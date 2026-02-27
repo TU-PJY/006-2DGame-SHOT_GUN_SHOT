@@ -11,6 +11,7 @@ public class St_ObjectManager : MonoBehaviour
     public HitIndicator hitIndPrefab;
     public BloodStain bloodStainIndPrefab;
     public BloodExplode bloodExplodePrefab;
+    public AmmoItem ammoItemPrefab;
     
     private List<Monster> monsterPool = new();
     private List<MuzzleFire> muzzleFirePool = new();
@@ -18,6 +19,7 @@ public class St_ObjectManager : MonoBehaviour
     private List<HitIndicator> hitIndPool = new();
     private List<BloodStain> bloodStainPool = new();
     private List<BloodExplode> bloodExplodePool = new();
+    private List<AmmoItem> ammoItemPool = new();
 
     void Awake()
     {
@@ -91,6 +93,11 @@ public class St_ObjectManager : MonoBehaviour
         return GetInstance(ref bloodExplodePool, bloodExplodePrefab);
     }
 
+    public AmmoItem GetAmmoItem()
+    {
+        return GetInstance(ref ammoItemPool, ammoItemPrefab);
+    }
+
     public void ReturnMonster(Monster m)
     {
         ReturnInstance(ref monsterPool, m);
@@ -119,5 +126,10 @@ public class St_ObjectManager : MonoBehaviour
     public void ReturnBloodExplode(BloodExplode b)
     {
         ReturnInstance(ref bloodExplodePool, b);
+    }
+
+    public void ReturnAmmoItem(AmmoItem a)
+    {
+        ReturnInstance(ref ammoItemPool, a);
     }
 }

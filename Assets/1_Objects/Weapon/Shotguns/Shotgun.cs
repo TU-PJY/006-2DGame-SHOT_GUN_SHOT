@@ -37,6 +37,7 @@ public class Shotgun : MonoBehaviour
         currentTotalAmmo = startTotalAmmoCount;
         St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
         St_BulletCountIndicator.Inst.InputTotalAmmoCount(currentTotalAmmo);
+        St_BulletCountIndicator.Inst.SetStart();
     }
 
     public void InputPositionAndRotation(Vector2 position, float degrees, Vector2 offset)
@@ -83,6 +84,13 @@ public class Shotgun : MonoBehaviour
 
         if (reloadState) // 재장전 상태라면 재장전 업데이트
             UpdateReload();
+    }
+
+    // Player가 탄약을 주울 경우 이 메서드를 호출한다
+    public void AddTotalAmmoCount()
+    {
+        currentTotalAmmo += maxAmmo;
+        St_BulletCountIndicator.Inst.InputTotalAmmoCount(currentTotalAmmo);
     }
 
     private void UpdateFireInterval()

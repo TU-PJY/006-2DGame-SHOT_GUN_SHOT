@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558ca435c7c8c8f4681684bc95acc5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::M1897
-  maxAmmo: 6
+  maxAmmo: 7
   pelletCount: 8
   pelletDamage: 15
   pelletDisperse: 40
