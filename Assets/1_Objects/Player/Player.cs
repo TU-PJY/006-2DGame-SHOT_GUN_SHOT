@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 enum moveDir
@@ -12,6 +13,7 @@ enum moveDir
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
+    public NearAttackBound nearAttackBound;
     public Animator anim;
     public Animator legAnim;
     public float linearDamping;
@@ -20,11 +22,17 @@ public class Player : MonoBehaviour
     public float totalHP;
     public float currHP;
 
+    public float nearAttackDamage;
+
     public Shotgun shotgun;
 
     private bool[] moveFlag = new bool[]{false, false, false, false};
     private Vector2 force;
     private float rotation;
+
+    private bool nearAttackState = false;
+    private bool nearAttackAvailable = true;
+    private float nearAttackDelay = 0f;
 
     // MainCamera->CameraController에서 참조
     [HideInInspector]
@@ -73,6 +81,13 @@ public class Player : MonoBehaviour
             // 소지한 총의 전체적인 동작 업데이트
             shotgun.UpdateShotgun();
         }
+
+        // 근접 공격 딜레이가 지나면 근접 공격 가능 상태가 활성화 된다.
+        nearAttackDelay -= Time.deltaTime;
+        if(nearAttackDelay <= 0f) {
+            nearAttackDelay = 0f;
+            nearAttackAvailable = true;
+        }
     }
 
     private void LateUpdate()
@@ -120,18 +135,28 @@ public class Player : MonoBehaviour
 
     void InputMouse()
     {
-        // 좌 클릭 시 현재 가지고 있는 샷건 발사
-        if (shotgun != null && Input.GetMouseButtonDown(0))
-            shotgun.PullTrigger();
+        // 근접 공격 도중에는 총을 발사할 수 없다.
+        if (!nearAttackState) {
+            // 우 클릭 시 총으로 때리는 근접 공격을 한다
+            if(!nearAttackState && nearAttackAvailable && Input.GetMouseButton(1)) {
+                nearAttackState = true;
+                nearAttackAvailable = false;
+                nearAttackDelay = 1f;
+            }
 
-        // 좌 클릭 뗄 시 현재 가지고 있는 샷건 발사 중단
-        else if (shotgun != null && Input.GetMouseButtonUp(0))
-            shotgun.ReleaseTrigger();
+            // 좌 클릭 시 현재 가지고 있는 샷건 발사
+            else if (Input.GetMouseButtonDown(0))
+                shotgun.PullTrigger();
+
+            // 좌 클릭 뗄 시 현재 가지고 있는 샷건 발사 중단
+            else if (Input.GetMouseButtonUp(0))
+                shotgun.ReleaseTrigger();
+        }
 
         if(!St_UpdateManager.Inst.IsRunning()) // 업데이트 일시 정지 시 회전 값을 업데이트 하지 않는다.
             return;
 
-            // 마우스 회전 시 바디 회전
+        // 마우스 회전 시 바디 회전
         rotation -= Input.mousePositionDelta.x * St_MouseManager.Inst.sensivity;
 
         // 0 ~ 360도 사이에서만 회전하도록 클램프
@@ -159,28 +184,14 @@ public class Player : MonoBehaviour
         bool walking       = movingUp || movingDown || movingStrafe;
         bool running       = runFlag && walking;
 
-        anim.SetBool("IsWalking", walking);
-        anim.SetBool("IsRunning", running);
+        anim.SetBool("IsWalking", walking && !nearAttackState);
+        anim.SetBool("IsRunning", running && !nearAttackState);
+        anim.SetBool("IsNearAttacking", nearAttackState);
 
         legAnim.SetBool("IsWalking", walking);
         legAnim.SetBool("IsRunning", running);
         legAnim.SetBool("IsStrafeLeft", strafingLeft);
         legAnim.SetBool("IsStrafeRight", strafingRight);
-
-        // 특정 상태가 현재 활성화 되었는지 확인
-        Predicate<string> checkState = (name) => legAnim.GetCurrentAnimatorStateInfo(0).IsName(name);
-
-        // 다리 애니메이션은 몸통 애니메이션과 재생 시간 동기화
-        var animTime = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
-        if (walking && checkState("IsWalking"))
-            legAnim.Play("IsWalking", 0, animTime);
-        if (running && checkState("IsRunning"))
-            legAnim.Play("IsRunning", 0, animTime);
-        if (strafingLeft && checkState("IsStrafeLeft"))
-            legAnim.Play("IsStrafeLeft", 0, animTime);
-        if (strafingRight && checkState("IsStrafeRight"))
-            legAnim.Play("IsStrafeRight", 0, animTime);
     }
 
     void UpdateBody() // 실제 바디 움직임 업데이트
@@ -209,5 +220,16 @@ public class Player : MonoBehaviour
 
         if(currHP <= 0f)
             St_GameOverUI.Inst.Enable();
+    }
+
+    // 애니메이터 이벤트로 호출
+    public void AnimEvent_OnNearAttack()
+    {
+        nearAttackBound.ProcessNearAttack(nearAttackDamage);
+    }
+
+    public void AnimEvent_EndNearAttack()
+    {
+        nearAttackState = false;
     }
 }

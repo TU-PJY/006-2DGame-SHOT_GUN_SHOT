@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::M1897
   maxAmmo: 6
   pelletCount: 8
-  pelletDamage: 20
+  pelletDamage: 15
   pelletDisperse: 40
   pelletDistance: 10
   fireInterval: 1

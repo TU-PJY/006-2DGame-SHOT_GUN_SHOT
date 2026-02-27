@@ -3692,6 +3692,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 953625487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &824479287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824479290}
+  - component: {fileID: 824479288}
+  - component: {fileID: 824479289}
+  m_Layer: 12
+  m_Name: NearAttackBound
+  m_TagString: NearAttackBound
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &824479288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824479287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04b86509f7d327488b1f58cdb39e23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NearAttackBound
+  bound: {fileID: 824479289}
+--- !u!70 &824479289
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824479287}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 1.0761744, y: 0.21991123}
+  m_Size: {x: 1.7771966, y: 1.2321709}
+  m_Direction: 1
+--- !u!4 &824479290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824479287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 16006613292253157}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841495370
 GameObject:
   m_ObjectHideFlags: 0
@@ -8239,6 +8322,7 @@ Transform:
   m_Children:
   - {fileID: 7092569146999778549}
   - {fileID: 7481412541682762187}
+  - {fileID: 824479290}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &207615834863744142
@@ -9989,6 +10073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   rigidBody: {fileID: 8811263905684507197}
+  nearAttackBound: {fileID: 824479288}
   anim: {fileID: 5844554225337452555}
   legAnim: {fileID: 4711271818211245187}
   linearDamping: 10
@@ -9996,6 +10081,7 @@ MonoBehaviour:
   runSpeedRatio: 1.5
   totalHP: 100
   currHP: 100
+  nearAttackDamage: 80
   shotgun: {fileID: -6038716875156518231, guid: 33d02e7e15fafca4d94ce49ad238566f, type: 3}
   runFlag: 0
 --- !u!114 &6048046439202915486

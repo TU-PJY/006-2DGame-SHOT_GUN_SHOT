@@ -95,7 +95,7 @@ public class Zombie : Monster
             anim.speed = attackSpeed / standardAttackSpeed;
     }
 
-    public void OnAttack()
+    public void AnimEvent_OnAttack()
     {
         print("[Zombie] Attack event occured");
         targetPlayer.GetComponent<Player>().GiveDamage(currAttackDamage);
