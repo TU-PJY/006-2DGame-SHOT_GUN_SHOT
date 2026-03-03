@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeIcon : MonoBehaviour
+public class IconAnimation_ : MonoBehaviour
 {
     public Image img;
 
