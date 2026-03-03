@@ -3,6 +3,7 @@ using UnityEngine;
 public class St_GameOverUI : MonoBehaviour
 {
     public static St_GameOverUI Inst;
+    public ResultText rText;
 
     void Awake()
     {
@@ -31,5 +32,6 @@ public class St_GameOverUI : MonoBehaviour
         St_UpdateManager.Inst.Pause();     
         St_MouseManager.Inst.UnlockCursor();
         gameObject.SetActive(true);
+        rText.UpdateText();
     }
 }
