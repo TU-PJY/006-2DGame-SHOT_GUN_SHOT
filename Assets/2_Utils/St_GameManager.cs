@@ -47,6 +47,10 @@ public class St_GameManager : MonoBehaviour
         if(!St_UpdateManager.Inst.IsRunning()) // 업그레이드 UI 활성화 상태에서는 업데이트하지 않음
             return;
 
+        // 일시정지가 아닐 때는 St_GameManager에서 활성화하고 비활성화는 St_PauseU또는 St_PauseUI의 ResumeButton에서 한다.
+        if(Input.GetKeyDown(KeyCode.Escape))
+            St_PauseUI.Inst.Enable();
+
         // 라운드가 끝나면 인게임을 일시정지 후 업그레이드 인터페이스를 활성화 한다.
         // 만약 모든 항목의 레벨이 최고 레벨이라면 더 이상 업그레이드 인터페이스를 활성화하지 않는다.
         if(remainedEnemy == 0) {

@@ -37,9 +37,11 @@ public class Zombie : Monster
     {
         if(!St_UpdateManager.Inst.IsRunning()) {
             anim.speed = 0f;
+            rigidBody.simulated = false;
             return;
         }
-            
+
+        rigidBody.simulated = true;
         anim.speed = 1f;
         CheckPlayerNear();
         MoveBody();

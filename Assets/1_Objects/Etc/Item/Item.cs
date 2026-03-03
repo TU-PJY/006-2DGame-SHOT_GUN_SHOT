@@ -22,4 +22,10 @@ public class Item : MonoBehaviour
         rb.angularVelocity = 0f;
         rb.AddForce(knockbackForce * direction, ForceMode2D.Impulse);
     }
+
+    void Update()
+    {
+        rb.simulated = St_UpdateManager.Inst.IsRunning();
+
+    }
 }

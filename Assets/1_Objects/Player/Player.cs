@@ -66,11 +66,13 @@ public class Player : MonoBehaviour
         if(!St_UpdateManager.Inst.IsRunning()) {
             anim.speed = 0f;
             legAnim.speed = 0f;
+            rigidBody.simulated = false;
             return;
         }
 
         anim.speed = 1f;   
         legAnim.speed = 1f;
+        rigidBody.simulated = true;
 
         UpdateAcc();
         UpdateAnim();
@@ -109,9 +111,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!St_UpdateManager.Inst.IsRunning()) 
-            return;
-
         UpdateBody();
     }
 
@@ -129,6 +128,7 @@ public class Player : MonoBehaviour
 
         if(!St_UpdateManager.Inst.IsRunning())
             return;
+
 
         // R키 누를 시 현재 가지고 있는 샷건 재장전 활성화
         // 근접 공격 도중에는 재장전 불가능
