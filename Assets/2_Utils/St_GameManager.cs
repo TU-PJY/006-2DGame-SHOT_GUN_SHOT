@@ -7,6 +7,7 @@ public class St_GameManager : MonoBehaviour
     public PauseUI pauseScreen;
     public UpgradeUI upgradeScreen;
     public GameOverUI gameoverScreen;
+    public RoundStartUI roundStartInd;
     public int startRound;
     public int startEnemyCount;
     public int enemyIncrease;
@@ -30,6 +31,7 @@ public class St_GameManager : MonoBehaviour
         Inst = this;
         print("[GameManager] Created new instance.");
     }
+
     void OnDestroy()
     {
         Inst = null;
@@ -44,6 +46,8 @@ public class St_GameManager : MonoBehaviour
         // 인디케이터에 정보를 먼저 전달 후 시작
         St_RemainEnemyIndicator.Inst.InputRemainedEnemy(remainedEnemy);
         St_RoundIndicator.Inst.InputRound(currentRound);
+
+        Instantiate(roundStartInd);    
     }
 
     void Update()
@@ -89,6 +93,7 @@ public class St_GameManager : MonoBehaviour
         currentRound++;
         destEnemyCount += enemyIncrease;
         remainedEnemy = destEnemyCount;
+        Instantiate(roundStartInd);
         print($"[GameManager] Next round started. | Round: {currentRound} | Dest enemy count: {destEnemyCount}");
     }
 

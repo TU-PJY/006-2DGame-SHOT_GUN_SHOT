@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 2825585920305095553}
   - component: {fileID: 6992445915264091899}
   - component: {fileID: 4479764166061265129}
+  - component: {fileID: 8488700210359164308}
   - component: {fileID: 280745080256361456}
   m_Layer: 5
   m_Name: HomeButton
@@ -825,7 +826,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2825585920305095553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8488700210359164308}
+        m_TargetAssemblyTypeName: TitleButton, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4479764166061265129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,6 +852,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIIcon
   img: {fileID: 4342926441390905311}
+--- !u!114 &8488700210359164308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184018630046363074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb746fcf5f77ff4084538f65bfafc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleButton
+  sceneSwitcher: {fileID: 4365965126099190336, guid: 15041eebbff43114495d8ed734776152, type: 3}
+  layout: {fileID: 3689731517163198824}
 --- !u!114 &280745080256361456
 MonoBehaviour:
   m_ObjectHideFlags: 0
