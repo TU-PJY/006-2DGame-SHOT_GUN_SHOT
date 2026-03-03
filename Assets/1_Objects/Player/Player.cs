@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
     // 애니메이터 이벤트로 호출
     public void AnimEvent_OnNearAttack()
     {
-        nearAttackBound.ProcessNearAttack(nearAttackDamage);
+        nearAttackBound.ProcessNearAttack(nearAttackDamage * St_LevelManager.Inst.nearAttackDmgDiff);
     }
 
     public void AnimEvent_EndNearAttack()

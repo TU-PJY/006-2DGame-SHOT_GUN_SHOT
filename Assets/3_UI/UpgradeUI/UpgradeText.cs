@@ -8,27 +8,28 @@ enum LevelItem
     Armor,
     Pellet,
     ShootSpeed,
-    ReloadSpeed
+    ReloadSpeed,
+    NearAttackDmg
 }
 
 public class UpgradeText : UpgradeItem
 {
     public Text text;
 
-    [TextArea(8, 8)]
-    public string textContent;
-    public int level;
+    private string originString;
     
     void Start()
     {
-        text = GetComponent<Text>();
         UpdateText();
+    }
+
+    void Awake()
+    {
+        originString = text.text;
     }
 
     public void UpdateText()
     {
-        int currLevel = 0;
-        int maxLevel = 0;
         LevelItem item = LevelItem.NA;
 
         if (usingArmorLevel)
@@ -39,33 +40,45 @@ public class UpgradeText : UpgradeItem
             item = LevelItem.ShootSpeed;
         else if(usingReloadSpeedLevel)
             item = LevelItem.ReloadSpeed;
+        else if(usingNearAttackDmgLevel)
+            item = LevelItem.NearAttackDmg;
+
+        var modified = originString;
 
         // 선택한 항목에 따라 다른 값을 얻어온다.
         switch (item)
         {
             case LevelItem.Armor:
-                currLevel = St_LevelManager.Inst.armorLevel;
-                maxLevel = St_LevelManager.Inst.armorLevelLimit;
+                modified = modified.Replace("{1}", St_LevelManager.Inst.armorDiffPercentage.ToString());
+                modified = modified.Replace("{2}", St_LevelManager.Inst.armorLevel.ToString());
+                modified = modified.Replace("{3}", St_LevelManager.Inst.armorLevelLimit.ToString());
                 break;
 
             case LevelItem.Pellet:
-                currLevel = St_LevelManager.Inst.pelletLevel;
-                maxLevel = St_LevelManager.Inst.pelletLevelLimit;
+                modified = modified.Replace("{1}", St_LevelManager.Inst.pelletDiffIncrease.ToString());
+                modified = modified.Replace("{2}", St_LevelManager.Inst.pelletLevel.ToString());
+                modified = modified.Replace("{3}", St_LevelManager.Inst.pelletLevelLimit.ToString());
                 break;
 
             case LevelItem.ShootSpeed:
-                currLevel = St_LevelManager.Inst.shootSpeedLevel;
-                maxLevel = St_LevelManager.Inst.shootSpeedLevelLimit;
+                modified = modified.Replace("{1}", St_LevelManager.Inst.shootSpeedDiffPercentage.ToString());
+                modified = modified.Replace("{2}", St_LevelManager.Inst.shootSpeedLevel.ToString());
+                modified = modified.Replace("{3}", St_LevelManager.Inst.shootSpeedLevelLimit.ToString());
                 break;
 
             case LevelItem.ReloadSpeed:
-                currLevel = St_LevelManager.Inst.reloadSpeedLevel;
-                maxLevel = St_LevelManager.Inst.reloadSpeedLevelLimit;
+                modified = modified.Replace("{1}", St_LevelManager.Inst.reloadSpeedDiffPercentage.ToString());
+                modified = modified.Replace("{2}", St_LevelManager.Inst.reloadSpeedLevel.ToString());
+                modified = modified.Replace("{3}", St_LevelManager.Inst.reloadSpeedLevelLimit.ToString());
+                break;
+
+            case LevelItem.NearAttackDmg:
+                modified = modified.Replace("{1}", St_LevelManager.Inst.nearAttackDmgDiffPercentage.ToString());
+                modified = modified.Replace("{2}", St_LevelManager.Inst.nearAttackDmgLevel.ToString());
+                modified = modified.Replace("{3}", St_LevelManager.Inst.nearAttackDmgLevelLimit.ToString());
                 break;
         }
-        
-        StringBuilder sb = new(textContent);
-        sb.Append($"\n\n레벨 {currLevel}/{maxLevel}");
-        text.text = sb.ToString();
+
+        text.text = modified;
     }
 }

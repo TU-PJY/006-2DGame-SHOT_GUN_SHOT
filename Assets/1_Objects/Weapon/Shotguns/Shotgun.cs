@@ -96,7 +96,7 @@ public class Shotgun : MonoBehaviour
 
     private void UpdateFireInterval()
     {
-        currentFireIntervalTime -= Time.deltaTime;
+        currentFireIntervalTime -= Time.deltaTime *  St_LevelManager.Inst.shootSpeedDiff;
         if(currentFireIntervalTime <= 0f)
             currentFireIntervalTime = 0f;
     }
@@ -130,16 +130,16 @@ public class Shotgun : MonoBehaviour
             T.Dispatch(pellet.transform, ref muzzleMatrix);
             pellet.RayCast(pelletCount + St_LevelManager.Inst.pelletDiff, pelletDisperse, pelletDistance, pelletDamage, knockbackForce);
 
-            currentFireIntervalTime += fireInterval * St_LevelManager.Inst.shootSpeedDiff; // 발사 간격 시간 값을 더하여 다음 발사 준비
+            currentFireIntervalTime += fireInterval; // 발사 간격 시간 값을 더하여 다음 발사 준비
         }
     }
 
     private void UpdateReload()
     {
-        currentReloadTime -= Time.deltaTime;
+        currentReloadTime -= Time.deltaTime * St_LevelManager.Inst.reloadSpeedDiff;
 
         // 재장전 인디케이터에 총 재장전 시간과 현재 재장전 시간 입력
-        St_ReloadIndicator.Inst.InputReloadTime(pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff, currentReloadTime);
+        St_ReloadIndicator.Inst.InputReloadTime(pelletReloadInterval, currentReloadTime);
 
         // 탄약을 모두 다 장전했다면 재장전 상태를 비활성화 하고 아니라면 다음 탄약 장전을 준비
         if (currentReloadTime <= 0f)
@@ -155,7 +155,7 @@ public class Shotgun : MonoBehaviour
                StopReload();
             }
             else
-                currentReloadTime += pelletReloadInterval * St_LevelManager.Inst.reloadSpeedDiff;
+                currentReloadTime += pelletReloadInterval;
         }
     }
 }

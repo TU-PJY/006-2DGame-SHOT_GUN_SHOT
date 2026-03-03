@@ -1,4 +1,6 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // level: 현재 레벨
 // levelLimit: 최대 레벨
@@ -7,36 +9,43 @@ using UnityEngine;
 public class St_LevelManager : MonoBehaviour
 {
     public static St_LevelManager Inst;
-    
+
     public int armorLevel;
     public int armorLevelLimit;
-    public float armorDiffValue;
+    public int armorDiffPercentage;
     [HideInInspector]
     public float armorDiff = 1f;
-    
+
     public int pelletLevel;
     public int pelletLevelLimit;
-     [HideInInspector]
+    public int pelletDiffIncrease;
+    [HideInInspector]
     public int pelletDiff = 1;
 
     public int shootSpeedLevel;
     public int shootSpeedLevelLimit;
-    public float shootSpeedDiffValue;
-     [HideInInspector]
+    public float shootSpeedDiffPercentage;
+    [HideInInspector]
     public float shootSpeedDiff = 1f;
 
     public int reloadSpeedLevel;
     public int reloadSpeedLevelLimit;
-    public float reloadSpeedDiffValue;
-     [HideInInspector]
+    public float reloadSpeedDiffPercentage;
+    [HideInInspector]
     public float reloadSpeedDiff = 1f;
+
+    public int nearAttackDmgLevel;
+    public int nearAttackDmgLevelLimit;
+    public float nearAttackDmgDiffPercentage;
+    [HideInInspector]
+    public float nearAttackDmgDiff = 1f;
 
     [HideInInspector] // 모든 항목이 최고 레벨일 경우 true
     public bool isAllLevelMax = false;
 
     void Awake()
     {
-        if(Inst && Inst != this)
+        if (Inst && Inst != this)
         {
             DestroyImmediate(this);
             return;
@@ -56,7 +65,9 @@ public class St_LevelManager : MonoBehaviour
         if (armorLevel < armorLevelLimit)
         {
             armorLevel++;
-            armorDiff *= armorDiffValue;
+            var mul = armorDiffPercentage / 100f;
+            var currentDiff = armorDiff + armorDiff * mul;
+            armorDiff = currentDiff;
             CheckAllLevelMax();
         }
     }
@@ -66,7 +77,7 @@ public class St_LevelManager : MonoBehaviour
         if (pelletLevel < pelletLevelLimit)
         {
             pelletLevel++;
-            pelletDiff += 1;
+            pelletDiff += pelletDiffIncrease;
             CheckAllLevelMax();
         }
     }
@@ -76,16 +87,33 @@ public class St_LevelManager : MonoBehaviour
         if (shootSpeedLevel < shootSpeedLevelLimit)
         {
             shootSpeedLevel++;
-            shootSpeedDiff *= shootSpeedDiffValue;
+            var mul = shootSpeedDiffPercentage / 100f;
+            var currentDiff = shootSpeedDiff + shootSpeedDiff * mul;
+            shootSpeedDiff = currentDiff;
             CheckAllLevelMax();
         }
     }
 
     public void IncreaseReloadSpeedLevel()
     {
-        if (reloadSpeedLevel < reloadSpeedLevelLimit) {
+        if (reloadSpeedLevel < reloadSpeedLevelLimit)
+        {
             reloadSpeedLevel++;
-            reloadSpeedDiff *= reloadSpeedDiffValue;
+            var mul = shootSpeedDiffPercentage / 100f;
+            var currentDiff = reloadSpeedDiff + reloadSpeedDiff * mul;
+            reloadSpeedDiff = currentDiff;
+            CheckAllLevelMax();
+        }
+    }
+
+    public void IncreaseNearAttackDmgLevel()
+    {
+        if (nearAttackDmgLevel < nearAttackDmgLevelLimit)
+        {
+            nearAttackDmgLevel++;
+              var mul = shootSpeedDiffPercentage / 100f;
+            var currentDiff = nearAttackDmgDiff + nearAttackDmgDiff * mul;
+            nearAttackDmgDiff = currentDiff;
             CheckAllLevelMax();
         }
     }
@@ -96,6 +124,7 @@ public class St_LevelManager : MonoBehaviour
         bool isPelletMax = pelletLevel == pelletLevelLimit;
         bool isShootSpeedMax = shootSpeedLevel == shootSpeedLevelLimit;
         bool isReloadSpeedMax = reloadSpeedLevel == reloadSpeedLevelLimit;
-        isAllLevelMax = isArmorMax && isPelletMax && isShootSpeedMax && isReloadSpeedMax;
+        bool isNearAttackDmgMax = nearAttackDmgLevel == nearAttackDmgLevelLimit;
+        isAllLevelMax = isArmorMax && isPelletMax && isShootSpeedMax && isReloadSpeedMax && isNearAttackDmgMax;
     }
 }

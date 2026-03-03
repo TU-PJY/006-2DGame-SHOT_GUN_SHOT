@@ -12,6 +12,8 @@ public class UpgradeButton : UpgradeItem
             St_LevelManager.Inst.IncreaseShootSpeedLevel();
         else if(usingReloadSpeedLevel)
             St_LevelManager.Inst.IncreaseReloadSpeedLevel();
+        else if(usingNearAttackDmgLevel)
+            St_LevelManager.Inst.IncreaseNearAttackDmgLevel();
 
         // 다음 라운드 준비
         St_GameManager.Inst.SetNextRound();

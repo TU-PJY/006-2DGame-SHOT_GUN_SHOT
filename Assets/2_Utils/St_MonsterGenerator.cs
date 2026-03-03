@@ -116,13 +116,13 @@ public class St_MonsterGenerator : MonoBehaviour
 
             // 라운드가 올라갈 수록 특수 속성 몬스터의 생성 확률이 높아진다.
             if (Range_.InRange(St_GameManager.Inst.currentRound, 2, 10))
-                specialFlag = Range_.Propability(20); 
+                specialFlag = Range_.Probability(20); 
 
             else if (Range_.InRange(St_GameManager.Inst.currentRound, 11, 19))
-                specialFlag = Range_.Propability(40); 
+                specialFlag = Range_.Probability(40); 
 
             else
-                specialFlag = Range_.Propability(60); 
+                specialFlag = Range_.Probability(60); 
  
             if(specialFlag) {
                 // 타입 중 하나를 선택하여 특수 속성 몬스터 생성
@@ -132,7 +132,7 @@ public class St_MonsterGenerator : MonoBehaviour
 
                 switch(randomType) {
                 case 1: // 약하고 빠름
-                    inst.accSpeed = Range_.Propability(25) ? 64 : 92; // 25퍼센트 확률로 더 빠른 속도 부여
+                    inst.accSpeed = Range_.Probability(25) ? 64 : 92; // 25퍼센트 확률로 더 빠른 속도 부여
                     inst.transform.localScale = new Vector2(0.7f, 0.7f);
                     inst.currAttackDamage *= 0.5f;
                     inst.attackSpeed = 24f;

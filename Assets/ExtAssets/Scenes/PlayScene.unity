@@ -1606,6 +1606,106 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &399700828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399700829}
+  - component: {fileID: 399700832}
+  - component: {fileID: 399700831}
+  - component: {fileID: 399700830}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &399700829
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399700828}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 673581283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -298}
+  m_SizeDelta: {x: 404.93, y: 300}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &399700830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399700828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368f4c8f4b30ce742b6b69aba6da2374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeText
+  usingArmorLevel: 0
+  usingPelletLevel: 0
+  usingShootSpeedLevel: 0
+  usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 1
+  text: {fileID: 399700831}
+--- !u!114 &399700831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399700828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7b8a6ae758778ef46bf18fc41151d7cb, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 51
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "<b><size=60>\uD480 \uC2A4\uC719</size></b>\n\n\uADFC\uC811 \uACF5\uACA9
+    \uB300\uBBF8\uC9C0\uAC00 \n{1}% \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8:
+    {2} / {3}"
+--- !u!222 &399700832
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399700828}
+  m_CullTransparentMesh: 1
 --- !u!1 &402058774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,6 +3043,250 @@ Transform:
   m_Children: []
   m_Father: {fileID: 953625487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &673581282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673581283}
+  - component: {fileID: 673581289}
+  - component: {fileID: 673581288}
+  - component: {fileID: 673581287}
+  - component: {fileID: 673581286}
+  - component: {fileID: 673581285}
+  - component: {fileID: 673581284}
+  m_Layer: 5
+  m_Name: UpgradeButton5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &673581283
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 399700829}
+  - {fileID: 806865411}
+  m_Father: {fileID: 1767518899876359080}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 350, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &673581284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b959f52be50fb4aa7493b597958056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
+  usingArmorLevel: 0
+  usingPelletLevel: 0
+  usingShootSpeedLevel: 0
+  usingReloadSpeedLevel: 1
+  usingNearAttackDmgLevel: 0
+--- !u!114 &673581285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccedec1929d48504ab33d937393844d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeIcon
+  img: {fileID: 806865412}
+--- !u!114 &673581286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 673581285}
+          m_TargetAssemblyTypeName: UpgradeIcon, Assembly-CSharp
+          m_MethodName: OnCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 673581285}
+          m_TargetAssemblyTypeName: UpgradeIcon, Assembly-CSharp
+          m_MethodName: OffCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 673581285}
+          m_TargetAssemblyTypeName: UpgradeIcon, Assembly-CSharp
+          m_MethodName: DownCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 673581285}
+          m_TargetAssemblyTypeName: UpgradeIcon, Assembly-CSharp
+          m_MethodName: UpCursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &673581287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &673581288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 673581287}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 673581284}
+        m_TargetAssemblyTypeName: UpgradeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!222 &673581289
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673581282}
+  m_CullTransparentMesh: 1
 --- !u!1 &684689589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3602,6 +3946,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &806865410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806865411}
+  - component: {fileID: 806865413}
+  - component: {fileID: 806865412}
+  m_Layer: 5
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &806865411
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806865410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.55, y: 2.55, z: 2.55}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 673581283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000061035156, y: 152}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &806865412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806865410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6fa365c0ceed64a49836c8da6dc0fcf8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &806865413
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806865410}
+  m_CullTransparentMesh: 1
 --- !u!1 &819091680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4588,19 +5007,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::St_UpgradeManager
   armorLevel: 0
   armorLevelLimit: 20
-  armorDiffValue: 0.9
+  armorDiffPercentage: 5
   armorDiff: 1
   pelletLevel: 0
-  pelletLevelLimit: 10
+  pelletLevelLimit: 20
+  pelletDiffIncrease: 1
   pelletDiff: 1
   shootSpeedLevel: 0
   shootSpeedLevelLimit: 20
-  shootSpeedDiffValue: 0.9
+  shootSpeedDiffPercentage: 5
   shootSpeedDiff: 1
   reloadSpeedLevel: 0
   reloadSpeedLevelLimit: 20
-  reloadSpeedDiffValue: 0.9
+  reloadSpeedDiffPercentage: 5
   reloadSpeedDiff: 1
+  nearAttackDmgLevel: 0
+  nearAttackDmgLevelLimit: 20
+  nearAttackDmgDiffPercentage: 5
+  nearAttackDmgDiff: 1
   isAllLevelMax: 0
 --- !u!1 &1038711465
 GameObject:
@@ -8972,6 +9396,7 @@ RectTransform:
   - {fileID: 9105713086763306972}
   - {fileID: 6674691529370699545}
   - {fileID: 5232104988167510640}
+  - {fileID: 673581283}
   m_Father: {fileID: 2832644963290764755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9093,7 +9518,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -218.2
+  m_Spacing: -59.4
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -9543,10 +9968,8 @@ MonoBehaviour:
   usingPelletLevel: 0
   usingShootSpeedLevel: 0
   usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 0
   text: {fileID: 9173188554614987007}
-  textContent: "<b><size=60>\uB354 \uD2BC\uD2BC\uD558\uAC8C</size></b>\n\n\uBC1B\uB294
-    \uD53C\uD574\uB7C9\uC774 \n10% \uAC10\uC18C\uD569\uB2C8\uB2E4."
-  level: 0
 --- !u!224 &3265087964827901708
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9596,10 +10019,8 @@ MonoBehaviour:
   usingPelletLevel: 0
   usingShootSpeedLevel: 0
   usingReloadSpeedLevel: 1
+  usingNearAttackDmgLevel: 0
   text: {fileID: 6960346887046000634}
-  textContent: "<b><size=60>\uC2E0\uC758 \uC190</size></b>\n\n\uC7AC\uC7A5\uC804
-    \uC18D\uB3C4\uAC00 \n10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  level: 0
 --- !u!114 &3459879029854616189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9654,10 +10075,8 @@ MonoBehaviour:
   usingPelletLevel: 1
   usingShootSpeedLevel: 0
   usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 0
   text: {fileID: 9199448448725950989}
-  textContent: "<b><size=60>\uB2E4\uB2E4\uC775\uC120</size></b>\n\n\uBC1C\uC0AC\uB418\uB294
-    \uD3A0\uB9BF\uC774\n1\uAC1C \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  level: 0
 --- !u!1 &4176915414732166124
 GameObject:
   m_ObjectHideFlags: 0
@@ -10202,7 +10621,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "<b><size=60>\uCD1D\uC7A1\uC774</size></b>\n\n\uC5F0\uC0AC \uC18D\uB3C4\uAC00
-    \n10% \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8: 0/10"
+    \n{1}% \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8: {2} / {3}"
 --- !u!114 &5906172793538545727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10224,7 +10643,7 @@ MonoBehaviour:
   runSpeedRatio: 1.5
   totalHP: 100
   currHP: 100
-  nearAttackDamage: 80
+  nearAttackDamage: 100
   shotgun: {fileID: -6038716875156518231, guid: 33d02e7e15fafca4d94ce49ad238566f, type: 3}
   runFlag: 0
 --- !u!114 &6048046439202915486
@@ -10445,7 +10864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655f13b94506fb64190bd81752c64892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  startRound: 2
+  startRound: 1
   startEnemyCount: 5
   enemyIncrease: 5
   currentRound: 0
@@ -10596,8 +11015,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "<b><size=60>\uC2E0\uC758 \uC190</size></b>\n\n\uC7AC\uC7A5\uC804 \uC18D\uB3C4\uAC00
-    \n10% \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8: 0/10"
+  m_Text: "<b><size=60>\uBE60\uB978 \uC190</size></b>\n\n\uC7AC\uC7A5\uC804 \uC18D\uB3C4\uAC00
+    \n{1}% \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8: {2} / {3}"
 --- !u!224 &7034474319988353566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10689,6 +11108,7 @@ MonoBehaviour:
   usingPelletLevel: 0
   usingShootSpeedLevel: 0
   usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 0
 --- !u!70 &7221749445717497176
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10949,6 +11369,7 @@ MonoBehaviour:
   usingPelletLevel: 0
   usingShootSpeedLevel: 1
   usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 0
 --- !u!1 &8059507140286827250
 GameObject:
   m_ObjectHideFlags: 0
@@ -10982,10 +11403,8 @@ MonoBehaviour:
   usingPelletLevel: 0
   usingShootSpeedLevel: 1
   usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 0
   text: {fileID: 5893320520706499423}
-  textContent: "<b><size=60>\uCD1D\uC7A1\uC774</size></b>\n\n\uC5F0\uC0AC \uC18D\uB3C4\uAC00
-    \n10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  level: 0
 --- !u!114 &8178525775216293557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11058,6 +11477,7 @@ MonoBehaviour:
   usingPelletLevel: 0
   usingShootSpeedLevel: 0
   usingReloadSpeedLevel: 1
+  usingNearAttackDmgLevel: 0
 --- !u!1 &8321662358588137617
 GameObject:
   m_ObjectHideFlags: 0
@@ -11163,6 +11583,7 @@ MonoBehaviour:
   usingPelletLevel: 1
   usingShootSpeedLevel: 0
   usingReloadSpeedLevel: 0
+  usingNearAttackDmgLevel: 0
 --- !u!114 &9173188554614987007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11197,8 +11618,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "<b><size=60>\uB354 \uD2BC\uD2BC\uD558\uAC8C</size></b>\n\n\uBC1B\uB294
-    \uD53C\uD574\uB7C9\uC774 \n10% \uAC10\uC18C\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8:
-    0/10"
+    \uD53C\uD574\uB7C9\uC774 \n{1}% \uAC10\uC18C\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8:
+    {2} / {3}"
 --- !u!114 &9199448448725950989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11233,8 +11654,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "<b><size=60>\uB2E4\uB2E4\uC775\uC120</size></b>\n\n\uBC1C\uC0AC\uB418\uB294
-    \uD3A0\uB9BF\uC774\n1\uAC1C \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8:
-    0/10"
+    \uD3A0\uB9BF\uC774\n{1}\uAC1C \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\n\uB808\uBCA8:
+    {2} / {3}"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
