@@ -14,7 +14,7 @@ public class ResultText : MonoBehaviour
 
     public void UpdateText()
     {
-        var bestRounds = PlayerPrefs.GetInt("SGS_BestRounds");
+        var bestRounds = PlayerData.LoadBestRoundsData();
         var currRounds = St_GameManager.Inst.currentRound;
         var modified = originString;
         modified = modified.Replace("{1}", currRounds.ToString());
@@ -24,7 +24,7 @@ public class ResultText : MonoBehaviour
         if(currRounds > bestRounds)
         {
             modified += "\n<size=60>Best Rounds!</size>";
-            PlayerPrefs.SetInt("SGS_BestRounds", currRounds);
+            PlayerData.UpdateBestRoundsData(currRounds);
         }
 
         text.text = modified;
