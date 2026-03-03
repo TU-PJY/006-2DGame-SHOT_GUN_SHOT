@@ -50,5 +50,7 @@ public class NearAttackBound : MonoBehaviour
 
             St_CameraController.Inst.AddShake(0.25f);
         }
+
+        St_SoundPlayer.Inst.PlayNearHitSound();
     }
 }

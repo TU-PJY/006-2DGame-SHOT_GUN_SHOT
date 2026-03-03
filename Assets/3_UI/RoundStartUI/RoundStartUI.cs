@@ -17,6 +17,8 @@ public class RoundStartUI : MonoBehaviour
         modified = modified.Replace("{}", St_GameManager.Inst.currentRound.ToString());
         text.text = modified;
         text.color = new Color(1f, 1f, 1f, 0f);
+
+        St_SoundPlayer.Inst.PlayRoundStartSound();
     }
 
     // 잠시 나타났다가 사라진다.

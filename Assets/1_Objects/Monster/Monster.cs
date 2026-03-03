@@ -30,6 +30,9 @@ public class Monster : MonoBehaviour
     [HideInInspector]
     public float weight;
 
+    [HideInInspector]
+    public bool isBig;
+
     // 두 퍼센테이지의 합이 100을 넘어서는 안 된다.
     // 두 퍼센테이지의 합이 100 미만일 때 나머지 값은 아이템을 드랍하지 않을 확률이다.
     public int ammoDropPercentage;

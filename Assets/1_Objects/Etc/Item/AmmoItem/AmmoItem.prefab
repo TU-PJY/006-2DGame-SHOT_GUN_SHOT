@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2544905395552466790}
   - component: {fileID: 7781831996994939278}
   - component: {fileID: 275207460905215649}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3275511828509121918}
   - component: {fileID: 3395970106786768971}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2106783183254364330}
   - component: {fileID: 5461694263050825638}
   - component: {fileID: 58707108438601990}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: AmmoItem
   m_TagString: AmmoItem
   m_Icon: {fileID: 0}

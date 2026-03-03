@@ -17,6 +17,7 @@ public class Zombie : Monster
         currHP = totalHP;
         weight = defaultWeight;
         totalDamage = 0f;
+        isBig = false;
     }
 
     protected override void Awake()
@@ -121,8 +122,13 @@ public class Zombie : Monster
         {
             currHP -= totalDamage;
             currHP = Mathf.Clamp(currHP, 0f, 9999f);
-            if(currHP <= 0f)
+            if(currHP <= 0f) {
+                if(isBig)
+                    St_SoundPlayer.Inst.PlayBigMonsterDeathSound();
+                else
+                    St_SoundPlayer.Inst.PlayMonsterDeathSound();
                 DeleteInstance();
+            }
             totalDamage = 0f;
         }
     }

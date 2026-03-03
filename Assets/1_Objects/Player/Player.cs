@@ -223,6 +223,7 @@ public class Player : MonoBehaviour
         {
             shotgun.AddTotalAmmoCount();
             other.GetComponent<AmmoItem>().ReturnInstance();
+            St_SoundPlayer.Inst.PlayAmmoGetSound();
         }
 
         // 회복 아이템을 주우면 최대 체력의 recoverPercentage%를 회복한다.
@@ -234,11 +235,14 @@ public class Player : MonoBehaviour
             currHP = Mathf.Clamp(currHP, 0, totalHP);
             St_HPIndicator.Inst.InputRecoveredHP(currHP);
             St_RecoveryIndicator.Inst.Enable(); // 회복 인디케이터 피드백 활성화
+            St_SoundPlayer.Inst.PlayHealthGetSound();
         }
     }
 
     public void GiveDamage(float val)
     {
+        St_SoundPlayer.Inst.PlayPlayerHit();
+        
         // 몬스터에게 피격 당하면 카메라에 흔들림을 추가하고 인디케이터에 현재 체력 값을 전달한다
         currHP -= val * St_LevelManager.Inst.armorDiff;
         currHP = Mathf.Clamp(currHP, 0f, 99999f);
@@ -246,8 +250,10 @@ public class Player : MonoBehaviour
         St_HPIndicator.Inst.InputHP(currHP);
         St_DamageIndicator.Inst.Enable();
 
-        if(currHP <= 0f)
+        if(currHP <= 0f) {
+            St_SoundPlayer.Inst.PlayPlayerDeathSound();
             St_GameManager.Inst.SetGameOver();
+        }
     }
 
     // 애니메이터 이벤트로 호출
@@ -259,5 +265,10 @@ public class Player : MonoBehaviour
     public void AnimEvent_EndNearAttack()
     {
         nearAttackState = false;
+    }
+
+    public void AnimEvent_OnNearAttackSound()
+    {
+        St_SoundPlayer.Inst.PlayPlayerNearAttackSound();
     }
 }

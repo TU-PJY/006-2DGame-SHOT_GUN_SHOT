@@ -12,7 +12,7 @@ public class IconAnimation_ : MonoBehaviour
     private float imgColorScale = 1f;
     private float destColorScale = 1f;
 
-    void Awake()
+    void Start()
     {
         imgColor = img.color;
         originScale = img.transform.localScale;

@@ -104,11 +104,16 @@ public class Shotgun : MonoBehaviour
 
     private void UpdateFire()
     {
-        if (currentAmmo == 0) // 탄약이 모두 떨어지면 발사 중지
+        if (currentAmmo == 0)  // 탄약이 모두 떨어지면 발사 중지
+        {
+            St_SoundPlayer.Inst.PlayEmptySound();
             return;
+        }
 
         if (currentFireIntervalTime <= 0f)
         {
+            St_SoundPlayer.Inst.PlayShootSound();
+            
             currentAmmo--;
 
             St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영
@@ -145,6 +150,8 @@ public class Shotgun : MonoBehaviour
         // 탄약을 모두 다 장전했다면 재장전 상태를 비활성화 하고 아니라면 다음 탄약 장전을 준비
         if (currentReloadTime <= 0f)
         {
+            St_SoundPlayer.Inst.PlayReloadSound();
+
             currentAmmo++;
             currentTotalAmmo--;
             St_BulletCountIndicator.Inst.InputBulletCount(currentAmmo); // UI에 현재 장탄수 반영

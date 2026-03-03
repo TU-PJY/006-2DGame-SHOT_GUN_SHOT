@@ -64,7 +64,7 @@ MonoBehaviour:
   defaultWeight: 1
   weight: 0
   ammoDropPercentage: 40
-  healthDropPercentage: 20
+  healthDropPercentage: 15
 --- !u!212 &7772376037535370840
 SpriteRenderer:
   m_ObjectHideFlags: 0

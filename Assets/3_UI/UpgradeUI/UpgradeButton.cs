@@ -6,6 +6,8 @@ public class UpgradeButton : UpgradeItem
 
     public void OnClick()
     {
+        St_SoundPlayer.Inst.PlayButtonSound();
+
         if(usingArmorLevel)
             St_LevelManager.Inst.IncreaseArmorLevel();
         else if(usingPelletLevel)

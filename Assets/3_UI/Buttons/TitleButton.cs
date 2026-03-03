@@ -9,6 +9,7 @@ public class TitleButton : MonoBehaviour
     // 타이틀로 돌아간다.
     public void OnButtonClick()
     {
+        St_SoundPlayer.Inst.PlayButtonSound();
         var newSwitcher = Instantiate(sceneSwitcher);
         newSwitcher.sceneName = "TitleScene";
         layout.gameObject.SetActive(false);
