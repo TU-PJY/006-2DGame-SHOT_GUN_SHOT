@@ -2303,7 +2303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.5176471}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8509,6 +8509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb40697971a0117418fc018c4a7fb742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestartButton
+  sceneSwitcher: {fileID: 4365965126099190336, guid: 15041eebbff43114495d8ed734776152, type: 3}
+  layout: {fileID: 1910526398}
 --- !u!1 &1980405806
 GameObject:
   m_ObjectHideFlags: 0
