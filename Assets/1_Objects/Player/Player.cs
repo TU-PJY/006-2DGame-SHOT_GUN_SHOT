@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     public float nearAttackDamage;
 
+    public float recoverPercentage; // 회복 아이템 주울 시 회복하는 최대 체력 대비 퍼센테이지
+
     public Shotgun shotgun;
 
     private bool[] moveFlag = new bool[]{false, false, false, false};
@@ -216,11 +218,22 @@ public class Player : MonoBehaviour
     {
         // 주워진 아이템은 사라진다.
         
-        // 탄약 아이템을 주우면 최대 장탄수 1세트를 얻는다.
-        if(other.CompareTag("Item"))
+        // 탄약 아이템을 주우면 탄약을 얻는다.
+        if(other.CompareTag("AmmoItem"))
         {
             shotgun.AddTotalAmmoCount();
             other.GetComponent<AmmoItem>().ReturnInstance();
+        }
+
+        // 회복 아이템을 주우면 최대 체력의 recoverPercentage%를 회복한다.
+        else if(other.CompareTag("HealthItem"))
+        {
+            other.GetComponent<HealthItem>().ReturnInstance();
+            var modifiedHP = currHP + totalHP * (recoverPercentage / 100f);
+            currHP = modifiedHP;
+            currHP = Mathf.Clamp(currHP, 0, totalHP);
+            St_HPIndicator.Inst.InputRecoveredHP(currHP);
+            St_RecoveryIndicator.Inst.Enable(); // 회복 인디케이터 피드백 활성화
         }
     }
 

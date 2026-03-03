@@ -42,11 +42,17 @@ public class St_HPIndicator : MonoBehaviour
 
     public void InputHP(float val)
     {
-        var inputVal = (int)val;
-        text.text = inputVal.ToString();
+        int intVal = (int)val;
+        text.text = intVal.ToString();
         // 피해를 입으면 색상을 빨간색으로 변경한다
         if(started)
             colorVal = 0f;
         started = true;
+    }
+
+    public void InputRecoveredHP(float val)
+    {
+        int intVal = (int)val;
+        text.text = intVal.ToString();
     }
 }

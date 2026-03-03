@@ -16,7 +16,9 @@ public class St_MonsterGenerator : MonoBehaviour
     public float initialMonsterCount;
     public float generateInterval;
     public Vector2 mapSize;
-    public float roundMultiply;
+
+    public float hpIncreasePercentage;
+    public float damageIncreasePercentage;
 
     private float currentTime;
     private SpawnDir[] spawnDir = new SpawnDir[4]{ SpawnDir.Left, SpawnDir.Right, SpawnDir.Top, SpawnDir.Bottom };
@@ -110,6 +112,7 @@ public class St_MonsterGenerator : MonoBehaviour
                 break;
         }
 
+        // 2라운드부터 특수 속성 몬스터가 스폰되고 공격력과 체력이 강화된다.
         if(St_GameManager.Inst.currentRound > 1)
         {
             bool specialFlag;
@@ -136,7 +139,7 @@ public class St_MonsterGenerator : MonoBehaviour
                     inst.transform.localScale = new Vector2(0.7f, 0.7f);
                     inst.currAttackDamage *= 0.5f;
                     inst.attackSpeed = 24f;
-                    inst.currHP *= 0.6f;
+                    inst.currHP *= 0.4f;
                     inst.weight *= 0.5f;
                     break;
 
@@ -152,11 +155,15 @@ public class St_MonsterGenerator : MonoBehaviour
             }
 
             // 기본 체력에 라운드 가중치를 부여하여 체력과 공격력을 강화한다
-            // 한 라운드 당 체력을 roundMultiply배씩 강화
-            inst.currHP *= Mathf.Pow(roundMultiply, St_GameManager.Inst.currentRound - 1);
+            // 한 라운드 당 체력을 hpIncreasePercentage% 만큼 강화
+            var hpMultiply = hpIncreasePercentage / 100f;
+            var newHP = inst.currHP + inst.currHP * hpMultiply;
+            inst.currHP = newHP;
 
-            //  한 라운드 당 공격력을 roundMultiply배씩 강화
-            inst.currAttackDamage *= Mathf.Pow(roundMultiply, St_GameManager.Inst.currentRound - 1);
+            //  한 라운드 당 공격력을 damageIncreasePercentage% 만큼 강화
+            var damageMultiply = damageIncreasePercentage / 100f;
+            var newDamage = inst.currAttackDamage + inst.currAttackDamage * damageMultiply;
+            inst.currAttackDamage = newDamage;
         }
     }
 }

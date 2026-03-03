@@ -55,3 +55,4 @@ MonoBehaviour:
   muzzleFireAnimSpeed: 1
   startTotalAmmoCount: 30
   knockbackForce: 5
+  ammoAddAmount: 3

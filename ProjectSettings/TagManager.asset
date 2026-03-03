@@ -9,7 +9,8 @@ TagManager:
   - Pellet
   - MapObject
   - NearAttackBound
-  - Item
+  - AmmoItem
+  - HealthItem
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Pellet
   - MapObject
   - NearAttackBound
-  - 
+  - Item
   - 
   - 
   - 
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: GroundProp2
     uniqueID: 1218379395
+    locked: 0
+  - name: GroundProp3
+    uniqueID: 1477542507
     locked: 0
   - name: PlayerLeg
     uniqueID: 748242815

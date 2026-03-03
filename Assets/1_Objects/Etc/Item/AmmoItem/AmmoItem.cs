@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AmmoItem : MonoBehaviour
+public class AmmoItem : Item
 {
-    public void ReturnInstance()
+    public override void ReturnInstance()
     {
         St_ObjectManager.Inst.ReturnAmmoItem(this);
     }

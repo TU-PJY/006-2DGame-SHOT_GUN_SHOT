@@ -136,5 +136,6 @@ public class Zombie : Monster
     public override void GiveKnockback(float force, Vector2 direction)
     {
         rigidBody.AddForce(force * direction / weight, ForceMode2D.Impulse);
+        latestDirection = direction;
     }
 }

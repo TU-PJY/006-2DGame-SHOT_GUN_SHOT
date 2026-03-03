@@ -2,7 +2,7 @@ using UnityEngine;
 
 using T = MatrixTransform;
 
-public class AmmoItemIndicator : MonoBehaviour
+public class ItemIndicator : MonoBehaviour
 {
     public Transform itemTransform;
 
@@ -13,8 +13,8 @@ public class AmmoItemIndicator : MonoBehaviour
         T.Identity(ref mat);
         T.Translate(ref mat, itemTransform.position);
         T.Rotate(ref mat, St_CameraController.Inst.GetRotation());
-        T.Translate(ref mat, new Vector2(0f, 2f));
-        T.Scale(ref mat, new Vector2(2f, 2f));
+        T.Translate(ref mat, new Vector2(0f, 1.5f));
+        T.Scale(ref mat, new Vector2(0.5f, 0.5f));
         T.Dispatch(transform, ref mat);
     }
 }

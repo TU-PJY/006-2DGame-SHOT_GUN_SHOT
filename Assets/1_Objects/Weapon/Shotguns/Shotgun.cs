@@ -16,6 +16,7 @@ public class Shotgun : MonoBehaviour
     public float muzzleFireAnimSpeed; // 충구 화염 애니메이션 속도
     public int startTotalAmmoCount; // 시작 탄약 개수
     public float knockbackForce; // 넉백 포스
+    public int ammoAddAmount; // 탄약 주웠을 때 추가되는 탄약 개수
 
     private bool triggerState; // 방아쇠당긴 상태
     private bool reloadState; // 재장전 상태 // Fire 실행 시 reloadState 취소
@@ -90,7 +91,7 @@ public class Shotgun : MonoBehaviour
     // Player가 탄약을 주울 경우 이 메서드를 호출한다
     public void AddTotalAmmoCount()
     {
-        currentTotalAmmo += maxAmmo;
+        currentTotalAmmo += ammoAddAmount;
         St_BulletCountIndicator.Inst.InputTotalAmmoCount(currentTotalAmmo);
     }
 

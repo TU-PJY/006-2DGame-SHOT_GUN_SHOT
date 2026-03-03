@@ -20,7 +20,7 @@ public class NearAttackBound : MonoBehaviour
     // Player에서 근접 공격을 활성화 하면 범위 내에 있는 몬스터에게 대미지를 준다.
     public void ProcessNearAttack(float damage)
     {
-        print("Near attack");
+        //print("Near attack");
         
         collideList.Clear();
         var count = bound.Overlap(filter, collideList);
