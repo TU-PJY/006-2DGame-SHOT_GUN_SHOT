@@ -15,4 +15,9 @@ public static class PlayerData
         PlayerPrefs.SetInt("SGS_BestRounds", val);
         Debug.Log($"[PlayerData] Best rounds data updated. {prevVal} -> {val}");
     }
+
+    public static void ResetBestRoundsData()
+    {
+        UpdateBestRoundsData(0);
+    }
 }
