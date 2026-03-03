@@ -106,7 +106,6 @@ public class Shotgun : MonoBehaviour
     {
         if (currentAmmo == 0)  // 탄약이 모두 떨어지면 발사 중지
         {
-            St_SoundPlayer.Inst.PlayEmptySound();
             return;
         }
 

@@ -6,7 +6,6 @@ public class St_SoundPlayer : MonoBehaviour
     public AudioSource audioSrc;
 
     public AudioClip shootClip;
-    public AudioClip emptyClip;
     public AudioClip reloadClip;
     public AudioClip nearHitClip;
     public AudioClip playerFootstepClip;
@@ -39,12 +38,6 @@ public class St_SoundPlayer : MonoBehaviour
     public void PlayShootSound()
     {
         audioSrc.PlayOneShot(shootClip);
-    }
-
-    // 빈 샷건 사운드
-    public void PlayEmptySound()
-    {
-        audioSrc.PlayOneShot(emptyClip);
     }
 
     // 재장전 사운드
