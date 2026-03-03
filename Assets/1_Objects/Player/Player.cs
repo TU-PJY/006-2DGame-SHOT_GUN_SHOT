@@ -247,7 +247,7 @@ public class Player : MonoBehaviour
         St_DamageIndicator.Inst.Enable();
 
         if(currHP <= 0f)
-            St_GameOverUI.Inst.Enable();
+            St_GameManager.Inst.SetGameOver();
     }
 
     // 애니메이터 이벤트로 호출

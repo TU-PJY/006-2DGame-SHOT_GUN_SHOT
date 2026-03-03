@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UpgradeButton : UpgradeItem
 {
+    public UpgradeUI upgradeScreen;
+
     public void OnClick()
     {
         if(usingArmorLevel)
@@ -17,5 +19,6 @@ public class UpgradeButton : UpgradeItem
 
         // 다음 라운드 준비
         St_GameManager.Inst.SetNextRound();
+        upgradeScreen.Disable();
     }
 }
